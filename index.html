@@ -72,6 +72,8 @@
   .btn-wa { background: #1FA855; color: #fff; text-align: center; line-height: 1.3; }
   .btn-wa:hover { background: #168F47; transform: translateY(-1px); }
   .btn-wa::before { content: ""; width: 18px; height: 18px; flex: 0 0 18px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z'/%3E%3C/svg%3E") center/contain no-repeat; }
+  .receipt-box { display: flex; flex-direction: column; gap: 8px; text-align: left; background: #EAF7EF; border: 1px solid #BFE3CB; border-radius: 14px; padding: 16px; margin: 4px 0 14px; }
+  .receipt-box span { font-size: .9rem; color: var(--muted); margin-bottom: 4px; }
   .or { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: .85rem; margin: 14px 0; }
   .or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
   .btn-block { width: 100%; }
@@ -131,6 +133,19 @@
   .card .icon { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 18px; }
   .card p { color: var(--muted); margin: 0; }
   .num { font-family: "Fraunces", serif; font-size: .9rem; color: var(--terracotta); font-weight: 700; margin-bottom: 6px; display: block; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 180px; gap: 14px; margin-top: 36px; }
+  .gallery figure { position: relative; margin: 0; border-radius: 16px; overflow: hidden; background: var(--clay); box-shadow: var(--shadow); }
+  .gallery figure.tall { grid-row: span 2; }
+  .gallery figure.wide { grid-column: span 2; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+  .gallery figure:hover img { transform: scale(1.05); }
+  .gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 12px; color: #fff; font-size: .9rem; font-weight: 600;
+    background: linear-gradient(transparent, rgba(42,36,33,.75)); }
+  .credit { text-align: center; font-size: .78rem; color: var(--muted); margin-top: 16px; }
+  .credit a { color: var(--muted); }
+  @media (max-width: 860px) { .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; gap: 10px; } }
 
   /* Included */
   .band { background: var(--clay); }
@@ -250,6 +265,7 @@
     <nav aria-label="Main">
       <ul class="nav-links">
         <li><a href="#make">What You'll Make</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#included">What's Included</a></li>
         <li><a href="#details">Details</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -364,6 +380,19 @@
           <p>Add fine details, paint and a protective gloss coat so your pieces stay bright and last for years.</p>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- GALLERY: replace these with photos from your own workshops when you have them -->
+  <section class="section" id="gallery" style="padding-top:20px">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">Get inspired</span>
+        <h2>Tiny clay creations, made by hand</h2>
+        <p class="lead">Keychains, little animals and cute characters: this is the kind of thing you'll learn to shape, colour and finish.</p>
+      </div>
+      <div class="gallery" id="galleryGrid"></div>
+      <p class="credit">Inspiration photos from Unsplash by <span id="galleryCredits"></span>.</p>
     </div>
   </section>
 
@@ -505,9 +534,13 @@
           <h3 id="doneTitle">Booking received!</h3>
           <div class="booking-id" id="doneId">—</div>
           <p id="doneMsg" style="color:var(--muted)"></p>
+          <div class="receipt-box">
+            <strong>One last step: share your payment receipt 📸</strong>
+            <span>Take a screenshot of the payment success screen in your UPI app, then tap below and attach it. This lets us confirm your seat faster.</span>
+            <a class="btn btn-wa btn-block" id="btnWa" href="#" target="_blank" rel="noopener">Share payment receipt on WhatsApp</a>
+          </div>
           <div class="actions">
             <a class="btn btn-ghost btn-sm" id="btnCal" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
-            <a class="btn btn-wa btn-sm" id="btnWa" href="#" target="_blank" rel="noopener">Send payment screenshot on WhatsApp</a>
           </div>
         </div>
 
@@ -619,6 +652,18 @@ const CONFIG = {
   bookingPrefix: "CLAY",
 };
 
+/* Gallery photos (Unsplash license: free to use, hotlinked as Unsplash asks). Swap in your own later. */
+const GALLERY = [
+  { id: "photo-1579018024219-fa9694ca5698", cap: "Rolling soft, colourful clay", by: "jwatson95", size: "tall" },
+  { id: "photo-1703294114247-46a556f4ef82", cap: "Shaping a tiny animal", by: "crazyivan_ita" },
+  { id: "photo-1679454598327-79a2014013cb", cap: "A clay keychain charm", by: "coppertistwu" },
+  { id: "photo-1782877757096-817463a79dcb", cap: "Palm-sized and adorable", by: "bijoyabraham", size: "tall" },
+  { id: "photo-1781389004856-264bd817ce80", cap: "Adding details with tools", by: "sebas_royy", size: "wide" },
+  { id: "photo-1569349503066-95fdafca1a73", cap: "Cute clay toys", by: "raspopovamarisha" },
+  { id: "photo-1650197642892-888c103e8f20", cap: "A whole table of handmade animals", by: "sk00leks", size: "wide" },
+  { id: "photo-1786551348882-cb2776d0e4af", cap: "Little characters with big personality", by: "alchimiste_cici" },
+];
+
 /* ===================================================================== */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -662,6 +707,19 @@ function fillStatic() {
   $("#year").textContent = new Date().getFullYear();
   $("#demoBanner").hidden = !DEMO;
   $("#mobileTip").hidden = !isMobile;
+}
+
+function renderGallery() {
+  const src = (id, w) => `https://images.unsplash.com/${id}?w=${w}&q=70&auto=format&fit=crop`;
+  $("#galleryGrid").innerHTML = GALLERY.map(g => `
+    <figure class="${g.size || ""}">
+      <img src="${src(g.id, 600)}" srcset="${src(g.id, 400)} 400w, ${src(g.id, 800)} 800w" sizes="(max-width: 860px) 50vw, 25vw"
+        alt="${g.cap}" loading="lazy" decoding="async">
+      <figcaption>${g.cap}</figcaption>
+    </figure>`).join("");
+  const people = [...new Set(GALLERY.map(g => g.by))];
+  $("#galleryCredits").innerHTML = people.map(p =>
+    `<a href="https://unsplash.com/@${p}?utm_source=clay_and_play&utm_medium=referral" target="_blank" rel="noopener">@${p}</a>`).join(", ");
 }
 
 /* ---------- Live pricing & seats ---------- */
@@ -942,7 +1000,7 @@ function finish(status) {
     action: "TEMPLATE", text: `${CONFIG.brand}: Clay Workshop`, dates: fmt(CONFIG.eventStart) + "/" + fmt(CONFIG.eventEnd),
     location: CONFIG.venue, details: `Booking ref ${booking.id}. ${CONFIG.mapUrl || ""}`,
   });
-  $("#btnWa").href = waLink(waBooking("Hi! I just booked the clay workshop. Here's my payment screenshot.", booking.utr));
+  $("#btnWa").href = waLink(waBooking("Hi! I've booked the clay workshop and paid. Sharing my payment receipt (screenshot attached).", booking.utr));
   showPanel("done");
   $("#checkout").scrollIntoView({ behavior: "smooth", block: "center" });
   loadStatus();
@@ -951,6 +1009,7 @@ function finish(status) {
 /* ---------- Wire up ---------- */
 function init() {
   fillStatic();
+  renderGallery();
   renderLive();
   loadStatus();
   setInterval(tickCountdown, 30000);
