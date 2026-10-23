@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clay and Play · Clay Keychains & Fridge Magnets Workshop</title>
+<meta name="description" content="A hands-on, beginner-friendly clay workshop. Make your own clay keychains and fridge magnets — all materials included, take your creations home.">
+<meta property="og:title" content="Clay and Play · Clay Keychains & Fridge Magnets Workshop">
+<meta property="og:description" content="Beginner-friendly. All materials included. Early bird ₹599.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#C85A32">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 56S6 40 6 22a13 13 0 0 1 26-4 13 13 0 0 1 26 4c0 18-26 34-26 34z' fill='%23C85A32'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+
+<style>
+  :root {
+    --terracotta: #C85A32;
+    --terracotta-dark: #A8461F;
+    --clay: #E8DCC4;
+    --stone: #F9F6F0;
+    --charcoal: #2A2421;
+    --muted: #6B605A;
+    --sage: #9CAF88;
+    --blush: #EFB3A3;
+    --butter: #F2D27A;
+    --line: #E4D9C7;
+    --white: #FFFFFF;
+    --ok: #3F7D4E;
+    --warn: #B4521F;
+    --radius: 18px;
+    --shadow: 0 1px 2px rgba(42,36,33,.06), 0 8px 24px rgba(42,36,33,.08);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  section[id], #checkout { scroll-margin-top: 84px; }
+  body {
+    margin: 0; background: var(--stone); color: var(--charcoal);
+    font: 16px/1.6 "Plus Jakarta Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.15; margin: 0 0 .5em; font-weight: 700; }
+  h1 { font-size: clamp(2.1rem, 5.2vw, 3.6rem); letter-spacing: -.02em; }
+  h2 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); letter-spacing: -.01em; }
+  h3 { font-size: 1.25rem; }
+  p { margin: 0 0 1em; }
+  a { color: var(--terracotta-dark); }
+  img, svg { max-width: 100%; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 80px 0; }
+  .eyebrow { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: .8em; }
+  .lead { font-size: 1.12rem; color: var(--muted); max-width: 60ch; }
+  .center { text-align: center; }
+  .center .lead { margin-left: auto; margin-right: auto; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :focus-visible { outline: 3px solid var(--butter); outline-offset: 2px; border-radius: 6px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+    padding: .95em 1.6em; border-radius: 999px; border: 2px solid transparent;
+    font: 600 1rem/1 inherit; font-family: inherit; text-decoration: none; cursor: pointer;
+    transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary { background: var(--terracotta); color: var(--white); box-shadow: 0 6px 18px rgba(200,90,50,.3); }
+  .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--charcoal); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--charcoal); }
+  .btn-sm { padding: .65em 1.15em; font-size: .92rem; }
+  .btn-block { width: 100%; }
+  .btn[disabled] { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  /* Announcement */
+  .announce { background: var(--charcoal); color: var(--clay); font-size: .9rem; text-align: center; padding: 10px 16px; }
+  .announce strong { color: var(--butter); }
+
+  /* Nav */
+  header.nav { position: sticky; top: 0; z-index: 40; background: rgba(249,246,240,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: "Fraunces", serif; font-weight: 700; font-size: 1.2rem; color: var(--charcoal); text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; }
+  .nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { color: var(--charcoal); text-decoration: none; font-weight: 500; font-size: .95rem; }
+  .nav-links a:hover { color: var(--terracotta); }
+  @media (max-width: 860px) { .nav-links { display: none; } }
+  .nav .btn { white-space: nowrap; }
+  @media (max-width: 480px) {
+    .brand { font-size: 1.02rem; gap: 8px; }
+    .brand-mark { width: 26px; height: 26px; }
+    .nav .btn-sm { padding: .6em .95em; font-size: .85rem; }
+    .wrap { padding: 0 16px; }
+  }
+
+  /* Hero */
+  .hero { padding: 64px 0 72px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+  .badges { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 28px; padding: 0; list-style: none; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; font-size: .9rem; font-weight: 500; }
+  .badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sage); }
+  .price-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+  .price-now { font-family: "Fraunces", serif; font-size: 2.6rem; font-weight: 700; color: var(--terracotta); }
+  .price-was { font-size: 1.25rem; color: var(--muted); text-decoration: line-through; }
+  .tag { background: var(--butter); color: var(--charcoal); font-size: .78rem; font-weight: 700; padding: 5px 10px; border-radius: 6px; letter-spacing: .04em; text-transform: uppercase; }
+  .micro { font-size: .9rem; color: var(--muted); margin-top: 12px; }
+  .hero-art { position: relative; }
+  .hero-art svg { width: 100%; height: auto; display: block; }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+    .hero-art { max-width: 280px; margin: 0 auto; order: -1; }
+    .hero { padding-top: 32px; }
+  }
+
+  /* Seats meter */
+  .seats { margin-top: 22px; max-width: 420px; }
+  .seats-top { display: flex; justify-content: space-between; font-size: .9rem; font-weight: 600; margin-bottom: 6px; }
+  .meter { height: 10px; background: var(--clay); border-radius: 99px; overflow: hidden; }
+  .meter > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--terracotta), var(--blush)); border-radius: 99px; transition: width .8s ease; }
+  .countdown { font-variant-numeric: tabular-nums; }
+
+  /* Cards */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+  @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr; } }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+  .card .icon { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 18px; }
+  .card p { color: var(--muted); margin: 0; }
+  .num { font-family: "Fraunces", serif; font-size: .9rem; color: var(--terracotta); font-weight: 700; margin-bottom: 6px; display: block; }
+
+  /* Included */
+  .band { background: var(--clay); }
+  .included { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; list-style: none; padding: 0; }
+  @media (max-width: 860px) { .included { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .included { grid-template-columns: 1fr; } }
+  .included li { display: flex; gap: 14px; align-items: flex-start; background: var(--stone); border-radius: 14px; padding: 18px; }
+  .included .dot { flex: 0 0 36px; height: 36px; border-radius: 10px; background: var(--white); display: grid; place-items: center; }
+  .included strong { display: block; }
+  .included span.sub { color: var(--muted); font-size: .92rem; }
+
+  /* Details */
+  .details { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+  .details > div { padding: 24px; border-right: 1px solid var(--line); }
+  .details > div:last-child { border-right: 0; }
+  .details .k { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); font-weight: 700; }
+  .details .v { font-weight: 600; font-size: 1.05rem; margin-top: 4px; }
+  @media (max-width: 860px) {
+    .details { grid-template-columns: 1fr 1fr; }
+    .details > div:nth-child(2) { border-right: 0; }
+    .details > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  }
+  @media (max-width: 480px) {
+    .details { grid-template-columns: 1fr; }
+    .details > div { border-right: 0; border-bottom: 1px solid var(--line); }
+    .details > div:last-child { border-bottom: 0; }
+  }
+  .host { display: flex; gap: 20px; align-items: center; margin-top: 28px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .avatar { flex: 0 0 72px; height: 72px; border-radius: 50%; background: var(--blush); display: grid; place-items: center; font-family: "Fraunces", serif; font-size: 1.6rem; font-weight: 700; color: var(--charcoal); }
+  .host p { margin: 0; color: var(--muted); }
+
+  /* Booking */
+  .book-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+  @media (max-width: 860px) { .book-grid { grid-template-columns: 1fr; } }
+  .checkout { background: var(--white); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 28px; }
+  .steps { display: flex; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
+  .steps li { flex: 1; height: 5px; border-radius: 99px; background: var(--clay); }
+  .steps li.on { background: var(--terracotta); }
+  .panel[hidden] { display: none; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: 6px; }
+  .field input, .field select {
+    width: 100%; padding: 13px 14px; border: 1.5px solid var(--line); border-radius: 12px;
+    font: inherit; background: var(--stone); color: var(--charcoal); transition: border-color .2s, background .2s;
+  }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--terracotta); background: var(--white); }
+  .field input[aria-invalid="true"] { border-color: var(--warn); background: #FFF6F2; }
+  .field .err { color: var(--warn); font-size: .85rem; margin-top: 5px; min-height: 0; }
+  .field .hint { color: var(--muted); font-size: .85rem; margin-top: 5px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 480px) { .row-2 { grid-template-columns: 1fr; } }
+  .hp { position: absolute; left: -9999px; }
+  .summary { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; background: var(--stone); border-radius: 14px; margin: 6px 0 18px; }
+  .summary .total { font-family: "Fraunces", serif; font-size: 1.6rem; font-weight: 700; }
+  .qr-box { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px; background: var(--stone); border-radius: 16px; margin-bottom: 16px; }
+  #qr { background: var(--white); padding: 12px; border-radius: 12px; border: 1px solid var(--line); line-height: 0; }
+  #qr img, #qr canvas { width: 220px; height: 220px; }
+  .upi-id { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-weight: 600; flex-wrap: wrap; justify-content: center; }
+  .upi-id code { background: var(--white); border: 1px dashed var(--line); padding: 5px 10px; border-radius: 8px; font-size: .95rem; }
+  .pay-amount { font-family: "Fraunces", serif; font-size: 2rem; font-weight: 700; color: var(--terracotta); margin-top: 6px; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
+  .note { font-size: .88rem; color: var(--muted); background: #FFF8E6; border: 1px solid #F2E2B0; padding: 12px 14px; border-radius: 12px; margin-bottom: 16px; }
+  .alert { padding: 12px 14px; border-radius: 12px; font-size: .92rem; margin-bottom: 16px; }
+  .alert-err { background: #FDEDE7; color: #8A3415; border: 1px solid #F3C7B6; }
+  .alert-info { background: #EEF3EA; color: #2F5A38; border: 1px solid #CFDCC6; }
+  .done { text-align: center; padding: 10px 0; }
+  .done .tick { width: 72px; height: 72px; border-radius: 50%; background: #E3EFE2; display: grid; place-items: center; margin: 0 auto 16px; }
+  .booking-id { display: inline-block; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 1.15rem; font-weight: 700; background: var(--stone); border: 1px dashed var(--terracotta); padding: 8px 16px; border-radius: 10px; margin: 6px 0 14px; letter-spacing: .05em; }
+  .link-btn { background: none; border: 0; color: var(--muted); font: inherit; font-size: .9rem; text-decoration: underline; cursor: pointer; padding: 6px; }
+  .perks { list-style: none; padding: 0; margin: 24px 0 0; }
+  .perks li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+  .perks li:last-child { border-bottom: 0; }
+  .perks svg { flex: 0 0 22px; margin-top: 2px; }
+  .spinner { width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .demo-banner { background: var(--butter); color: var(--charcoal); text-align: center; font-size: .85rem; font-weight: 600; padding: 8px 16px; }
+
+  /* FAQ */
+  .faq { max-width: 780px; margin: 36px auto 0; }
+  .faq details { background: var(--white); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
+  .faq summary { cursor: pointer; list-style: none; padding: 18px 22px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--terracotta); transition: transform .2s; flex: 0 0 auto; }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq .ans { padding: 0 22px 18px; color: var(--muted); }
+
+  /* Footer */
+  footer { background: var(--charcoal); color: var(--clay); padding: 48px 0 32px; font-size: .92rem; }
+  footer a { color: var(--clay); }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  @media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; } }
+  .foot-grid h4 { font-family: "Fraunces", serif; color: var(--white); margin: 0 0 10px; font-size: 1.05rem; }
+  .copy { border-top: 1px solid rgba(232,220,196,.15); margin-top: 32px; padding-top: 20px; opacity: .7; font-size: .85rem; }
+
+  /* Mobile sticky CTA */
+  .sticky-cta { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 50; display: none; }
+  @media (max-width: 860px) { .sticky-cta.show { display: block; } }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<!-- Shown only when the page is not connected to the Google Sheet yet -->
+<div class="demo-banner" id="demoBanner" hidden>Demo mode: bookings are not saved. Add your Apps Script URL in CONFIG to go live.</div>
+
+<div class="announce" role="note">
+  <span id="announceText">Early bird <strong>₹599</strong> ends soon · Only <strong data-seats-left>20</strong> seats in this batch</span>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Home">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#E8DCC4"/><path d="M32 49S15 38.5 15 26.5a8.5 8.5 0 0 1 17-2.6 8.5 8.5 0 0 1 17 2.6C49 38.5 32 49 32 49z" fill="#C85A32"/></svg>
+      <span data-brand>Clay and Play</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#make">What You'll Make</a></li>
+        <li><a href="#included">What's Included</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#book">Book Your Seat</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Hands-on clay workshop · <span data-event-date>Saturday, 31 Oct 2026</span></span>
+        <h1>Make your own clay keychains &amp; fridge magnets</h1>
+        <p class="lead">Two fun hours of shaping, colouring and finishing tiny clay charms. No experience needed. You'll leave with handmade pieces you'll actually use, or gift.</p>
+        <ul class="badges">
+          <li class="badge">Beginner friendly</li>
+          <li class="badge">All materials included</li>
+          <li class="badge">Take home your creations</li>
+        </ul>
+
+        <div class="price-row">
+          <span class="price-now" data-price>₹599</span>
+          <span class="price-was" data-was>₹699</span>
+          <span class="tag" data-tag>Early bird</span>
+        </div>
+        <a class="btn btn-primary" href="#book">Reserve my seat <span aria-hidden="true">→</span></a>
+        <p class="micro" id="heroMicro">Early bird ends in <span class="countdown" data-countdown>—</span> · Price per person, all inclusive</p>
+
+        <div class="seats" aria-live="polite">
+          <div class="seats-top"><span><span data-seats-left>20</span> of <span data-seats-total>20</span> seats left</span><span data-seats-hint></span></div>
+          <div class="meter" role="progressbar" aria-label="Seats booked" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="meterFill"></span></div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <!-- Illustration: a heart magnet, a daisy keychain and a smiley magnet -->
+        <svg viewBox="0 0 420 400">
+          <circle cx="210" cy="205" r="175" fill="#E8DCC4"/>
+          <circle cx="120" cy="90" r="10" fill="#F2D27A"/>
+          <circle cx="345" cy="320" r="8" fill="#9CAF88"/>
+          <circle cx="330" cy="95" r="6" fill="#EFB3A3"/>
+          <!-- keychain ring + chain -->
+          <circle cx="250" cy="62" r="24" fill="none" stroke="#8F857D" stroke-width="7"/>
+          <path d="M250 86v12m0 8v12m0 8v10" stroke="#8F857D" stroke-width="6" stroke-linecap="round"/>
+          <!-- daisy -->
+          <g transform="translate(250 190)">
+            <g fill="#FFFFFF" stroke="#E4D9C7" stroke-width="2">
+              <ellipse rx="22" ry="40" cy="-38"/>
+              <ellipse rx="22" ry="40" cy="-38" transform="rotate(60)"/>
+              <ellipse rx="22" ry="40" cy="-38" transform="rotate(120)"/>
+              <ellipse rx="22" ry="40" cy="-38" transform="rotate(180)"/>
+              <ellipse rx="22" ry="40" cy="-38" transform="rotate(240)"/>
+              <ellipse rx="22" ry="40" cy="-38" transform="rotate(300)"/>
+            </g>
+            <circle r="30" fill="#F2D27A"/>
+            <circle cx="-10" cy="-4" r="3.5" fill="#2A2421"/>
+            <circle cx="10" cy="-4" r="3.5" fill="#2A2421"/>
+            <path d="M-9 8q9 8 18 0" stroke="#2A2421" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="-19" cy="6" r="5" fill="#EFB3A3" opacity=".8"/>
+            <circle cx="19" cy="6" r="5" fill="#EFB3A3" opacity=".8"/>
+          </g>
+          <!-- heart magnet -->
+          <g transform="translate(120 280) rotate(-12)">
+            <path d="M0 48S-62 10-62-28a31 31 0 0 1 62-8 31 31 0 0 1 62 8C62 10 0 48 0 48z" fill="#C85A32"/>
+            <path d="M-38-30a16 16 0 0 1 18-12" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".45" fill="none"/>
+          </g>
+          <!-- smiley round magnet -->
+          <g transform="translate(330 285) rotate(10)">
+            <circle r="44" fill="#9CAF88"/>
+            <circle r="44" fill="none" stroke="#7F946C" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/>
+            <circle cx="-13" cy="-6" r="4" fill="#2A2421"/>
+            <circle cx="13" cy="-6" r="4" fill="#2A2421"/>
+            <path d="M-12 9q12 11 24 0" stroke="#2A2421" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU'LL MAKE -->
+  <section class="section" id="make" style="padding-top:40px">
+    <div class="wrap center">
+      <span class="eyebrow">What you'll make</span>
+      <h2>Small charms, big satisfaction</h2>
+      <p class="lead">We go step by step, from a lump of soft clay to a finished, varnished piece.</p>
+      <div class="grid-3" style="text-align:left">
+        <article class="card">
+          <div class="icon" style="background:#FBE7DF">
+            <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="5" fill="none" stroke="#C85A32" stroke-width="2.5"/><path d="M16 13v3" stroke="#C85A32" stroke-width="2.5"/><path d="M16 29s-9-5.5-9-11.5a4.5 4.5 0 0 1 9-1.5 4.5 4.5 0 0 1 9 1.5C25 23.5 16 29 16 29z" fill="#C85A32"/></svg>
+          </div>
+          <span class="num">01</span>
+          <h3>Clay keychains</h3>
+          <p>Shape cute charms (fruits, flowers, initials or your own idea) and fix them onto real keychain rings.</p>
+        </article>
+        <article class="card">
+          <div class="icon" style="background:#EEF2E8">
+            <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="6" fill="#9CAF88"/><circle cx="12" cy="14" r="1.8" fill="#2A2421"/><circle cx="20" cy="14" r="1.8" fill="#2A2421"/><path d="M11.5 19q4.5 4 9 0" stroke="#2A2421" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          </div>
+          <span class="num">02</span>
+          <h3>Fridge magnets</h3>
+          <p>Design flat, chunky magnets with texture, stamps and layered colour, sized to hold a photo or a note.</p>
+        </article>
+        <article class="card">
+          <div class="icon" style="background:#FCF4DC">
+            <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M20 4l8 8-13 13H7v-8z" fill="#F2D27A" stroke="#B89432" stroke-width="2" stroke-linejoin="round"/><path d="M7 25l-3 3" stroke="#B89432" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <span class="num">03</span>
+          <h3>Paint, detail &amp; varnish</h3>
+          <p>Add fine details, paint and a protective gloss coat so your pieces stay bright and last for years.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUDED -->
+  <section class="section band" id="included">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">Everything is provided</span>
+        <h2>What's included in your ticket</h2>
+        <p class="lead">Just show up. We've got every tool and material on the table for you.</p>
+      </div>
+      <ul class="included">
+        <li><span class="dot">🟤</span><div><strong>Premium modelling clay</strong><span class="sub">Soft, colourful and easy to shape</span></div></li>
+        <li><span class="dot">🛠️</span><div><strong>Sculpting tool kit</strong><span class="sub">Shapers, cutters, texture stamps</span></div></li>
+        <li><span class="dot">🔑</span><div><strong>Keychain rings &amp; magnets</strong><span class="sub">Hardware for every piece you make</span></div></li>
+        <li><span class="dot">🎨</span><div><strong>Paints &amp; gloss varnish</strong><span class="sub">For colour, detail and a lasting finish</span></div></li>
+        <li><span class="dot">🎁</span><div><strong>Take-home box</strong><span class="sub">Safe packaging plus a care card</span></div></li>
+        <li><span class="dot">☕</span><div><strong>Refreshments</strong><span class="sub">Tea, coffee and snacks during the session</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="section" id="details">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:36px">
+        <span class="eyebrow">Workshop details</span>
+        <h2>When &amp; where</h2>
+      </div>
+      <div class="details">
+        <div><div class="k">Date</div><div class="v" data-event-date>Saturday, 31 Oct 2026</div></div>
+        <div><div class="k">Time</div><div class="v" data-event-time>10:00 AM – 12:00 PM</div></div>
+        <div><div class="k">Venue</div><div class="v"><a data-venue-link href="#" target="_blank" rel="noopener"><span data-venue>Venue shared on WhatsApp after booking</span></a></div></div>
+        <div><div class="k">Batch size</div><div class="v"><span data-seats-total>20</span> people</div></div>
+      </div>
+      <div class="host">
+        <div class="avatar" data-host-initial aria-hidden="true">N</div>
+        <div>
+          <h3 style="margin:0 0 4px" data-host-name>Nirmala</h3>
+          <p data-host-bio>Clay artist and your host for the day. I've been making clay charms for years and love helping first-timers make something they're proud of.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="section band" id="book">
+    <div class="wrap book-grid">
+      <div>
+        <span class="eyebrow">Book your seat</span>
+        <h2>Reserve your spot in 2 minutes</h2>
+        <p class="lead">Pay by UPI with any app (GPay, PhonePe, Paytm or your bank app). We'll email you as soon as your seat is confirmed.</p>
+        <ul class="perks">
+          <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#9CAF88"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span>All-inclusive price, no hidden charges</span></li>
+          <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#9CAF88"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span>Book up to <span data-max-seats>4</span> seats at once for friends &amp; family</span></li>
+          <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#9CAF88"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span>Free reschedule up to 48 hours before the session</span></li>
+        </ul>
+      </div>
+
+      <div class="checkout" id="checkout">
+        <ol class="steps" aria-hidden="true"><li class="on"></li><li></li><li></li></ol>
+        <div class="alert alert-err" id="globalErr" role="alert" hidden></div>
+
+        <!-- STEP 1: details -->
+        <form class="panel" id="panelDetails" novalidate>
+          <h3>Your details</h3>
+          <div class="field">
+            <label for="fName">Full name</label>
+            <input id="fName" name="name" autocomplete="name" required>
+            <div class="err" id="eName"></div>
+          </div>
+          <div class="field">
+            <label for="fEmail">Email address</label>
+            <input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" required>
+            <div class="err" id="eEmail"></div>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label for="fPhone">WhatsApp number</label>
+              <input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="98765 43210" required>
+              <div class="err" id="ePhone"></div>
+            </div>
+            <div class="field">
+              <label for="fQty">Seats</label>
+              <select id="fQty" name="qty"></select>
+            </div>
+          </div>
+          <input class="hp" name="website" id="fWebsite" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="summary">
+            <div><div style="font-weight:600">Total</div><div class="hint" style="color:var(--muted);font-size:.85rem"><span id="sumLine">1 × ₹599</span> <span data-tag-inline></span></div></div>
+            <div class="total" id="sumTotal">₹599</div>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit" id="btnContinue">Continue to payment</button>
+          <p class="micro center" style="margin-bottom:0">You'll get a confirmation email once your seat is confirmed.</p>
+        </form>
+
+        <!-- STEP 2: pay (UPI) -->
+        <div class="panel" id="panelPay" hidden>
+          <h3>Scan &amp; pay</h3>
+          <div class="qr-box">
+            <div style="font-size:.9rem;color:var(--muted)">Amount to pay</div>
+            <div class="pay-amount" id="payAmount">₹599</div>
+            <div style="font-size:.85rem;color:var(--muted);margin-bottom:14px">Booking ref <strong id="payRef">—</strong></div>
+            <div id="qr" role="img" aria-label="UPI payment QR code"></div>
+            <div class="upi-id">UPI ID <code id="upiId">—</code> <button class="btn btn-ghost btn-sm" type="button" id="btnCopyUpi">Copy</button></div>
+            <div class="actions">
+              <a class="btn btn-primary btn-sm" id="btnUpiApp" href="#" hidden>Open UPI app</a>
+              <button class="btn btn-ghost btn-sm" type="button" id="btnSaveQr">Save QR image</button>
+            </div>
+          </div>
+          <div class="note" id="mobileTip" hidden><strong>Paying from this phone?</strong> Tap <em>Save QR image</em>, open GPay or PhonePe, choose <em>Scan QR</em>, then pick the image from your gallery. If the <em>Open UPI app</em> button doesn't work, use this method.</div>
+          <div class="note">Please pay the <strong>exact amount</strong> shown. Pay only once, and keep the payment screen open: you'll need the 12-digit UTR / transaction ID in the next step.</div>
+          <button class="btn btn-primary btn-block" type="button" id="btnPaid">I've paid, next</button>
+          <div class="center"><button class="link-btn" type="button" data-back="details">← Change details</button></div>
+        </div>
+
+        <!-- STEP 3: UTR -->
+        <form class="panel" id="panelUtr" hidden novalidate>
+          <h3>Confirm your payment</h3>
+          <p style="color:var(--muted)">Enter the <strong>12-digit UTR</strong> (also called UPI Ref No. or Transaction ID) from your payment app's receipt.</p>
+          <div class="field">
+            <label for="fUtr">UTR / UPI reference number</label>
+            <input id="fUtr" name="utr" inputmode="numeric" maxlength="16" placeholder="e.g. 431245678901" autocomplete="off" required>
+            <div class="hint">GPay: open the payment → <em>UPI transaction ID</em>. PhonePe: <em>UTR</em>. Paytm: <em>UPI Ref No.</em></div>
+            <div class="err" id="eUtr"></div>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit" id="btnSubmitUtr">Submit booking</button>
+          <div class="center"><button class="link-btn" type="button" data-back="pay">← Back to QR</button></div>
+        </form>
+
+        <!-- STEP 4: done -->
+        <div class="panel done" id="panelDone" hidden>
+          <div class="tick"><svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#3F7D4E" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 id="doneTitle">Booking received!</h3>
+          <div class="booking-id" id="doneId">—</div>
+          <p id="doneMsg" style="color:var(--muted)"></p>
+          <div class="actions">
+            <a class="btn btn-ghost btn-sm" id="btnCal" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
+            <a class="btn btn-ghost btn-sm" id="btnWa" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+          </div>
+        </div>
+
+        <!-- Sold out -->
+        <div class="panel done" id="panelSoldOut" hidden>
+          <h3>This batch is full 🎉</h3>
+          <p style="color:var(--muted)">Thank you for the love! Message us on WhatsApp to join the waitlist for the next batch.</p>
+          <a class="btn btn-primary" id="btnWaitlist" href="#" target="_blank" rel="noopener">Join the waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">Good to know</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Do I need any experience with clay?</summary>
+          <div class="ans">Not at all. The workshop is designed for complete beginners. We demonstrate every step and help you at your table throughout the session.</div>
+        </details>
+        <details>
+          <summary>Can I take my creations home the same day?</summary>
+          <div class="ans">Yes. You'll take your pieces home in a protective box. Clay keeps hardening for 24–48 hours, so keep them flat and away from water during that time. A care card in the box explains everything.</div>
+        </details>
+        <details>
+          <summary>How many pieces will I make?</summary>
+          <div class="ans">Most people finish 2–3 keychains and 2–3 fridge magnets, depending on size and detail. Quality over quantity: we'll make sure each piece is finished properly.</div>
+        </details>
+        <details>
+          <summary>What should I wear? Is it suitable for kids?</summary>
+          <div class="ans">Wear comfortable clothes you don't mind getting a little paint on. Aprons are provided. Children aged 8 and above are welcome with a booked seat; under-12s should be accompanied by an adult.</div>
+        </details>
+        <details>
+          <summary>What is the early bird price?</summary>
+          <div class="ans">Seats booked before the early bird deadline cost <strong data-early-price>₹599</strong> instead of <strong data-regular-price>₹699</strong>. The price shown in the booking form is always the current one.</div>
+        </details>
+        <details>
+          <summary>How is my seat confirmed after paying by UPI?</summary>
+          <div class="ans">After you pay and submit your UTR number, we match it with our bank record and email your confirmation, usually within a few hours. Your seat is held as soon as you submit.</div>
+        </details>
+        <details>
+          <summary>What is the cancellation / rescheduling policy?</summary>
+          <div class="ans">You can reschedule for free to a future batch up to 48 hours before the session. Cancellations made more than 48 hours before get a full refund; after that we can't refund, but you can transfer your seat to a friend.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4 data-brand>Clay and Play</h4>
+        <p style="opacity:.8;max-width:38ch">Hands-on clay workshops for people who want to slow down and make something with their hands.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p style="margin:0">WhatsApp: <a data-wa-link href="#" target="_blank" rel="noopener"><span data-wa-display>+91 83100 78780</span></a><br>
+        Email: <a data-email-link href="#"><span data-email>niminsr@gmail.com</span></a><br>
+        <span data-venue>Venue shared on WhatsApp after booking</span></p>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <p style="margin:0;opacity:.85">We use your details only to manage your booking and send workshop updates. We never share them. Payments go directly to our UPI account. See the FAQ for the refund policy.</p>
+      </div>
+    </div>
+    <div class="copy">© <span id="year">2026</span> <span data-brand>Clay and Play</span>. All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta"><a class="btn btn-primary btn-block" href="#book">Book your seat · <span data-price>₹599</span></a></div>
+
+<script>
+/* =====================================================================
+   CONFIG: edit these values. Prices, seats and payment mode come from
+   the Google Sheet (Apps Script) once apiUrl is set; the numbers below
+   are only fallbacks for demo mode.
+   ===================================================================== */
+const CONFIG = {
+  apiUrl: "https://script.google.com/macros/s/AKfycbwgyTXqKFEbUIMCwdh4vPSO9LX6XuciGwAH3kqyfdyIPw_5YbcJiwe1qo3XEyMC2o27yw/exec",                      // Apps Script Web App URL (ends with /exec). Empty = demo mode.
+
+  brand: "Clay and Play",
+  eventDate: "Saturday, 31 Oct 2026",
+  eventTime: "10:00 AM – 12:00 PM",
+  eventStart: "2026-10-31T10:00:00+05:30", // used for "Add to calendar"
+  eventEnd:   "2026-10-31T12:00:00+05:30",
+  venue: "Venue shared on WhatsApp after booking",
+  mapUrl: "",                         // Google Maps share link (leave "" until you have one)
+  hostName: "Nirmala",
+  hostBio: "Clay artist and your host for the day. I love helping first-timers make something they're proud of.",
+
+  upiId: "8310928904@ybl",            // your UPI ID (GPay → Profile → UPI ID)
+  upiName: "Nirmala",                 // name shown in the payer's app
+  whatsapp: "918310078780",           // country code + number, digits only
+  email: "niminsr@gmail.com",
+
+  // Demo-mode fallbacks (live values come from the Apps Script)
+  earlyPrice: 599,
+  regularPrice: 699,
+  earlyBirdEnds: "2026-10-28T23:59:00+05:30",
+  seatsTotal: 20,
+  maxSeatsPerBooking: 4,
+  bookingPrefix: "CLAY",
+};
+
+/* ===================================================================== */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const inr = n => "₹" + Number(n).toLocaleString("en-IN");
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const DEMO = !CONFIG.apiUrl;
+
+let live = {
+  mode: "upi",
+  isEarlyBird: Date.now() < Date.parse(CONFIG.earlyBirdEnds),
+  earlyPrice: CONFIG.earlyPrice,
+  regularPrice: CONFIG.regularPrice,
+  earlyBirdEnds: CONFIG.earlyBirdEnds,
+  seatsTotal: CONFIG.seatsTotal,
+  seatsLeft: CONFIG.seatsTotal,
+  maxSeatsPerBooking: CONFIG.maxSeatsPerBooking,
+  razorpayKeyId: "",
+};
+live.price = live.isEarlyBird ? live.earlyPrice : live.regularPrice;
+
+const booking = { id: "", name: "", email: "", phone: "", qty: 1, amount: 0 };
+
+/* ---------- Static content from CONFIG ---------- */
+function fillStatic() {
+  $$("[data-brand]").forEach(el => el.textContent = CONFIG.brand);
+  $$("[data-event-date]").forEach(el => el.textContent = CONFIG.eventDate);
+  $$("[data-event-time]").forEach(el => el.textContent = CONFIG.eventTime);
+  $$("[data-venue]").forEach(el => el.textContent = CONFIG.venue);
+  $$("[data-venue-link]").forEach(el => CONFIG.mapUrl ? el.href = CONFIG.mapUrl : el.removeAttribute("href"));
+  $$("[data-host-name]").forEach(el => el.textContent = CONFIG.hostName);
+  $$("[data-host-bio]").forEach(el => el.textContent = CONFIG.hostBio);
+  $$("[data-host-initial]").forEach(el => el.textContent = (CONFIG.hostName.trim()[0] || "•").toUpperCase());
+  $$("[data-email]").forEach(el => el.textContent = CONFIG.email);
+  $$("[data-email-link]").forEach(el => el.href = "mailto:" + CONFIG.email);
+  const wa = "https://wa.me/" + CONFIG.whatsapp;
+  $$("[data-wa-link]").forEach(el => el.href = wa);
+  $$("[data-wa-display]").forEach(el => el.textContent = "+" + CONFIG.whatsapp.replace(/^(\d{2})(\d{5})(\d+)$/, "$1 $2 $3"));
+  $("#btnWa").href = wa;
+  $("#btnWaitlist").href = wa + "?text=" + encodeURIComponent(`Hi! I'd like to join the waitlist for the next ${CONFIG.brand} clay workshop.`);
+  $("#upiId").textContent = CONFIG.upiId;
+  $("#year").textContent = new Date().getFullYear();
+  $("#demoBanner").hidden = !DEMO;
+  $("#mobileTip").hidden = !isMobile;
+}
+
+/* ---------- Live pricing & seats ---------- */
+function renderLive() {
+  const early = live.isEarlyBird;
+  $$("[data-price]").forEach(el => el.textContent = inr(live.price));
+  $$("[data-was]").forEach(el => { el.textContent = inr(live.regularPrice); el.hidden = !early; });
+  $$("[data-tag]").forEach(el => el.hidden = !early);
+  $$("[data-tag-inline]").forEach(el => el.textContent = early ? "· early bird" : "");
+  $$("[data-early-price]").forEach(el => el.textContent = inr(live.earlyPrice));
+  $$("[data-regular-price]").forEach(el => el.textContent = inr(live.regularPrice));
+  $$("[data-seats-left]").forEach(el => el.textContent = Math.max(0, live.seatsLeft));
+  $$("[data-seats-total]").forEach(el => el.textContent = live.seatsTotal);
+  $$("[data-max-seats]").forEach(el => el.textContent = live.maxSeatsPerBooking);
+
+  const booked = live.seatsTotal - Math.max(0, live.seatsLeft);
+  const pct = live.seatsTotal ? Math.round(booked / live.seatsTotal * 100) : 0;
+  $("#meterFill").style.width = pct + "%";
+  $(".meter").setAttribute("aria-valuenow", pct);
+  $("[data-seats-hint]").textContent = live.seatsLeft <= 5 && live.seatsLeft > 0 ? "Filling fast" : "";
+
+  $("#announceText").innerHTML = live.seatsLeft <= 0
+    ? "This batch is <strong>sold out</strong> · Message us to join the waitlist"
+    : early
+      ? `Early bird <strong>${inr(live.earlyPrice)}</strong> (regular ${inr(live.regularPrice)}) · Only <strong>${live.seatsLeft}</strong> seats left`
+      : `${CONFIG.eventDate} · Only <strong>${live.seatsLeft}</strong> seats left`;
+  $("#heroMicro").innerHTML = early
+    ? 'Early bird ends in <span class="countdown" data-countdown>—</span> · Price per person, all inclusive'
+    : "Price per person, all inclusive · Instant booking";
+
+  const sel = $("#fQty"), keep = +sel.value || 1;
+  const max = Math.max(1, Math.min(live.maxSeatsPerBooking, live.seatsLeft));
+  sel.innerHTML = "";
+  for (let i = 1; i <= max; i++) sel.add(new Option(i + (i === 1 ? " seat" : " seats"), i));
+  sel.value = Math.min(keep, max);
+  updateSummary();
+
+  // Only from the details step: someone already on the QR/UTR step may have paid and must be able to submit
+  if (live.seatsLeft <= 0 && !$("#panelDetails").hidden) showPanel("soldout");
+  tickCountdown();
+}
+
+function updateSummary() {
+  const q = +$("#fQty").value || 1;
+  $("#sumLine").textContent = `${q} × ${inr(live.price)}`;
+  $("#sumTotal").textContent = inr(q * live.price);
+}
+
+function tickCountdown() {
+  const el = $("[data-countdown]");
+  if (!el) return;
+  const ms = Date.parse(live.earlyBirdEnds) - Date.now();
+  if (ms <= 0) { if (live.isEarlyBird) loadStatus(); return; }
+  const d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
+  el.textContent = d > 0 ? `${d}d ${h}h ${m}m` : `${h}h ${m}m`;
+}
+
+async function loadStatus() {
+  if (DEMO) {
+    live.isEarlyBird = Date.now() < Date.parse(live.earlyBirdEnds);
+    live.price = live.isEarlyBird ? live.earlyPrice : live.regularPrice;
+    renderLive();
+    return;
+  }
+  try {
+    const res = await fetch(CONFIG.apiUrl + "?action=status", { cache: "no-store" });
+    const data = await res.json();
+    if (data.ok) { Object.assign(live, data); renderLive(); }
+  } catch (e) {
+    console.warn("Could not load live status", e);
+    renderLive();
+  }
+}
+
+async function api(payload) {
+  if (DEMO) return demoApi(payload);
+  // text/plain avoids a CORS preflight, which Apps Script can't answer
+  const res = await fetch(CONFIG.apiUrl, { method: "POST", body: JSON.stringify(payload) });
+  const data = await res.json();
+  if (data.detail) console.error("Booking server error:", data.detail);
+  return data;
+}
+
+function demoApi(p) {
+  return new Promise(r => setTimeout(() => {
+    if (p.action === "book") {
+      live.seatsLeft -= p.qty; renderLive();
+      r({ ok: true, bookingId: p.bookingId, status: "Pending" });
+    } else r({ ok: false, error: "Razorpay is not available in demo mode." });
+  }, 700));
+}
+
+/* ---------- Steps ---------- */
+const PANELS = { details: "#panelDetails", pay: "#panelPay", utr: "#panelUtr", done: "#panelDone", soldout: "#panelSoldOut" };
+const STEP_NO = { details: 1, pay: 2, utr: 3, done: 3, soldout: 0 };
+function showPanel(name) {
+  Object.entries(PANELS).forEach(([k, sel]) => $(sel).hidden = k !== name);
+  $$(".steps li").forEach((li, i) => li.classList.toggle("on", i < STEP_NO[name]));
+  $(".steps").style.visibility = name === "soldout" ? "hidden" : "visible";
+  hideErr();
+}
+function showErr(msg) { const el = $("#globalErr"); el.textContent = msg; el.hidden = false; }
+function hideErr() { $("#globalErr").hidden = true; }
+function busy(btn, on, label) {
+  btn.disabled = on;
+  if (on) { btn.dataset.label = btn.innerHTML; btn.innerHTML = '<span class="spinner"></span> ' + (label || "Please wait…"); }
+  else if (btn.dataset.label) btn.innerHTML = btn.dataset.label;
+}
+
+/* ---------- Validation ---------- */
+function setFieldErr(input, errEl, msg) {
+  input.setAttribute("aria-invalid", msg ? "true" : "false");
+  $(errEl).textContent = msg || "";
+  return !msg;
+}
+function normPhone(v) {
+  let d = v.replace(/\D/g, "");
+  if (d.length === 12 && d.startsWith("91")) d = d.slice(2);
+  if (d.length === 11 && d.startsWith("0")) d = d.slice(1);
+  return /^[6-9]\d{9}$/.test(d) ? d : "";
+}
+// Catch common domain typos so confirmation emails don't bounce (gmail.con, gamil.com…)
+function emailTypo(email) {
+  const [user, domain = ""] = email.toLowerCase().split("@");
+  const fixes = { "gmail.con": "gmail.com", "gmail.co": "gmail.com", "gamil.com": "gmail.com", "gmial.com": "gmail.com",
+    "gmai.com": "gmail.com", "gmail.cm": "gmail.com", "yahoo.con": "yahoo.com", "yaho.com": "yahoo.com",
+    "hotmail.con": "hotmail.com", "outlook.con": "outlook.com", "rediffmail.con": "rediffmail.com" };
+  return fixes[domain] ? `${user}@${fixes[domain]}` : "";
+}
+function validateDetails() {
+  const name = $("#fName").value.trim();
+  const email = $("#fEmail").value.trim();
+  const phone = normPhone($("#fPhone").value);
+  const ok = [
+    setFieldErr($("#fName"), "#eName", name.length < 2 ? "Please enter your full name." : ""),
+    setFieldErr($("#fEmail"), "#eEmail", !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? "Please enter a valid email address."
+      : emailTypo(email) ? `Did you mean ${emailTypo(email)}? Your confirmation is sent here.` : ""),
+    setFieldErr($("#fPhone"), "#ePhone", phone ? "" : "Enter a 10-digit Indian mobile number."),
+  ].every(Boolean);
+  if (!ok) { const bad = $('[aria-invalid="true"]'); bad && bad.focus(); return null; }
+  return { name, email, phone, qty: +$("#fQty").value || 1 };
+}
+
+function newBookingId() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let s = "";
+  for (let i = 0; i < 5; i++) s += chars[Math.floor(Math.random() * chars.length)];
+  return CONFIG.bookingPrefix + "-" + s;
+}
+
+/* ---------- UPI ---------- */
+function upiUri() {
+  const p = new URLSearchParams({
+    pa: CONFIG.upiId, pn: CONFIG.upiName, am: booking.amount.toFixed(2), cu: "INR",
+    tn: `${booking.id} Clay workshop`,
+  });
+  return "upi://pay?" + p.toString().replace(/\+/g, "%20").replace(/%40/g, "@");
+}
+function renderQr() {
+  const box = $("#qr");
+  box.innerHTML = "";
+  if (window.QRCode) {
+    new QRCode(box, { text: upiUri(), width: 440, height: 440, correctLevel: QRCode.CorrectLevel.M });
+  } else {
+    box.textContent = "QR could not load. Pay to the UPI ID below.";
+    box.style.lineHeight = "1.4";
+  }
+  $("#payAmount").textContent = inr(booking.amount);
+  $("#payRef").textContent = booking.id;
+  const app = $("#btnUpiApp");
+  app.hidden = !isMobile;
+  app.href = upiUri();
+}
+function saveQr() {
+  const c = $("#qr canvas"), img = $("#qr img");
+  const src = c ? c.toDataURL("image/png") : img && img.src;
+  if (!src) return;
+  // Add amount + ref under the QR so the image is self-explanatory in the gallery
+  const out = document.createElement("canvas"), W = 520, H = 640, ctx = out.getContext("2d");
+  out.width = W; out.height = H;
+  ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, W, H);
+  const q = new Image();
+  q.onload = () => {
+    ctx.drawImage(q, 40, 40, 440, 440);
+    ctx.fillStyle = "#2A2421"; ctx.textAlign = "center";
+    ctx.font = "bold 36px sans-serif"; ctx.fillText("Pay " + inr(booking.amount), W / 2, 540);
+    ctx.font = "22px sans-serif"; ctx.fillText(CONFIG.upiId + "  ·  Ref " + booking.id, W / 2, 585);
+    const a = document.createElement("a");
+    a.href = out.toDataURL("image/png"); a.download = `clay-workshop-${booking.id}.png`;
+    document.body.appendChild(a); a.click(); a.remove();
+  };
+  q.src = src;
+}
+
+/* ---------- Razorpay (when the Apps Script is switched to razorpay mode) ---------- */
+function loadRazorpay() {
+  return new Promise((res, rej) => {
+    if (window.Razorpay) return res();
+    const s = document.createElement("script");
+    s.src = "https://checkout.razorpay.com/v1/checkout.js";
+    s.onload = res; s.onerror = () => rej(new Error("Could not load Razorpay"));
+    document.head.appendChild(s);
+  });
+}
+async function payWithRazorpay(btn) {
+  busy(btn, true, "Opening secure checkout…");
+  try {
+    await loadRazorpay();
+    const order = await api({ action: "createOrder", name: booking.name, email: booking.email, phone: booking.phone, qty: booking.qty });
+    if (!order.ok) throw new Error(order.error || "Could not start payment.");
+    booking.id = order.bookingId;
+    const rzp = new Razorpay({
+      key: order.keyId,
+      order_id: order.orderId,
+      amount: order.amount,
+      currency: "INR",
+      name: CONFIG.brand,
+      description: `Clay workshop · ${booking.qty} seat(s)`,
+      prefill: { name: booking.name, email: booking.email, contact: "+91" + booking.phone },
+      notes: { bookingId: booking.id },
+      theme: { color: "#C85A32" },
+      handler: async (r) => {
+        busy(btn, true, "Confirming your seat…");
+        const v = await api({ action: "verifyRazorpay", orderId: r.razorpay_order_id, paymentId: r.razorpay_payment_id, signature: r.razorpay_signature })
+          .catch(() => ({ ok: false }));
+        busy(btn, false);
+        if (v.ok) finish(v.status || "Confirmed");
+        else showErr(`Payment received, but we couldn't confirm it automatically. Your ref is ${booking.id}. Please WhatsApp us and we'll sort it out right away.`);
+      },
+      modal: { ondismiss: () => busy(btn, false) },
+    });
+    rzp.on("payment.failed", e => showErr("Payment failed: " + (e.error && e.error.description || "please try again.")));
+    rzp.open();
+  } catch (e) {
+    busy(btn, false);
+    showErr(e.message);
+  }
+}
+
+/* ---------- Finish ---------- */
+function finish(status) {
+  $("#doneId").textContent = booking.id;
+  const confirmed = status === "Confirmed";
+  const wait = /waitlist/i.test(status);
+  $("#doneTitle").textContent = confirmed ? "You're booked! 🎉" : wait ? "We've received your payment" : "Booking received!";
+  $("#doneMsg").textContent = confirmed
+    ? `Your ${booking.qty > 1 ? booking.qty + " seats are" : "seat is"} confirmed. A confirmation email is on its way to ${booking.email}.`
+    : wait
+      ? "The batch filled up while you were paying. We'll contact you on WhatsApp to move you to the next batch or refund you in full."
+      : `We'll verify your UPI payment and email your confirmation to ${booking.email}, usually within a few hours. Your seat is held.`;
+  const fmt = iso => new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  $("#btnCal").href = "https://calendar.google.com/calendar/render?" + new URLSearchParams({
+    action: "TEMPLATE", text: `${CONFIG.brand}: Clay Workshop`, dates: fmt(CONFIG.eventStart) + "/" + fmt(CONFIG.eventEnd),
+    location: CONFIG.venue, details: `Booking ref ${booking.id}. ${CONFIG.mapUrl || ""}`,
+  });
+  $("#btnWa").href = `https://wa.me/${CONFIG.whatsapp}?text=` + encodeURIComponent(`Hi! I just booked the clay workshop. Booking ref: ${booking.id}`);
+  showPanel("done");
+  $("#checkout").scrollIntoView({ behavior: "smooth", block: "center" });
+  loadStatus();
+}
+
+/* ---------- Wire up ---------- */
+function init() {
+  fillStatic();
+  renderLive();
+  loadStatus();
+  setInterval(tickCountdown, 30000);
+
+  $("#fQty").addEventListener("change", updateSummary);
+  ["#fName", "#fEmail", "#fPhone"].forEach(s => $(s).addEventListener("input", e => e.target.setAttribute("aria-invalid", "false")));
+
+  $("#panelDetails").addEventListener("submit", async e => {
+    e.preventDefault();
+    hideErr();
+    if ($("#fWebsite").value) return; // bot
+    const d = validateDetails();
+    if (!d) return;
+    if (d.qty > live.seatsLeft) return showErr(`Only ${live.seatsLeft} seat(s) left.`);
+    Object.assign(booking, d, { amount: d.qty * live.price });
+    if (live.mode === "razorpay") return payWithRazorpay($("#btnContinue"));
+    if (!booking.id) booking.id = newBookingId();
+    renderQr();
+    showPanel("pay");
+    $("#checkout").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  $("#btnCopyUpi").addEventListener("click", async e => {
+    try { await navigator.clipboard.writeText(CONFIG.upiId); }
+    catch { const t = document.createElement("textarea"); t.value = CONFIG.upiId; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); }
+    e.target.textContent = "Copied ✓";
+    setTimeout(() => e.target.textContent = "Copy", 1800);
+  });
+  $("#btnSaveQr").addEventListener("click", saveQr);
+  $("#btnPaid").addEventListener("click", () => { showPanel("utr"); $("#fUtr").focus(); });
+  $$("[data-back]").forEach(b => b.addEventListener("click", () => showPanel(b.dataset.back)));
+
+  $("#fUtr").addEventListener("input", e => { e.target.value = e.target.value.replace(/\D/g, ""); e.target.setAttribute("aria-invalid", "false"); });
+  $("#panelUtr").addEventListener("submit", async e => {
+    e.preventDefault();
+    hideErr();
+    const utr = $("#fUtr").value.trim();
+    if (!setFieldErr($("#fUtr"), "#eUtr", /^\d{12}$/.test(utr) ? "" : "The UTR is exactly 12 digits. Check your payment receipt.")) return;
+    const btn = $("#btnSubmitUtr");
+    busy(btn, true, "Saving your booking…");
+    try {
+      const r = await api({ action: "book", bookingId: booking.id, name: booking.name, email: booking.email, phone: booking.phone, qty: booking.qty, amount: booking.amount, utr });
+      busy(btn, false);
+      if (!r.ok) return showErr(r.error || "Something went wrong. Please try again.");
+      booking.id = r.bookingId || booking.id;
+      finish(r.status);
+    } catch (err) {
+      busy(btn, false);
+      showErr(`We couldn't reach the server. Your payment is safe. Please try again, or WhatsApp us your UTR and ref ${booking.id}.`);
+    }
+  });
+
+  // Mobile sticky CTA: show after the hero, hide when the booking form is on screen
+  const sticky = $("#stickyCta");
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.target.id === "book") sticky.dataset.book = en.isIntersecting ? "1" : ""; if (en.target.classList.contains("hero")) sticky.dataset.hero = en.isIntersecting ? "1" : ""; });
+    sticky.classList.toggle("show", !sticky.dataset.book && !sticky.dataset.hero);
+  });
+  io.observe($("#book")); io.observe($(".hero"));
+}
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
