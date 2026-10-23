@@ -69,6 +69,11 @@
   .btn-ghost { background: transparent; color: var(--charcoal); border-color: var(--line); }
   .btn-ghost:hover { border-color: var(--charcoal); }
   .btn-sm { padding: .65em 1.15em; font-size: .92rem; }
+  .btn-wa { background: #1FA855; color: #fff; text-align: center; line-height: 1.3; }
+  .btn-wa:hover { background: #168F47; transform: translateY(-1px); }
+  .btn-wa::before { content: ""; width: 18px; height: 18px; flex: 0 0 18px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z'/%3E%3C/svg%3E") center/contain no-repeat; }
+  .or { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: .85rem; margin: 14px 0; }
+  .or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
   .btn-block { width: 100%; }
   .btn[disabled] { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
 
@@ -421,6 +426,7 @@
       <div class="checkout" id="checkout">
         <ol class="steps" aria-hidden="true"><li class="on"></li><li></li><li></li></ol>
         <div class="alert alert-err" id="globalErr" role="alert" hidden></div>
+        <a class="btn btn-wa btn-block" id="btnWaErr" href="#" target="_blank" rel="noopener" hidden style="margin:-6px 0 16px">Send my booking on WhatsApp</a>
 
         <!-- STEP 1: details -->
         <form class="panel" id="panelDetails" novalidate>
@@ -472,6 +478,8 @@
           <div class="note" id="mobileTip" hidden><strong>Paying from this phone?</strong> Tap <em>Save QR image</em>, open GPay or PhonePe, choose <em>Scan QR</em>, then pick the image from your gallery. If the <em>Open UPI app</em> button doesn't work, use this method.</div>
           <div class="note">Please pay the <strong>exact amount</strong> shown. Pay only once, and keep the payment screen open: you'll need the 12-digit UTR / transaction ID in the next step.</div>
           <button class="btn btn-primary btn-block" type="button" id="btnPaid">I've paid, next</button>
+          <div class="or"><span>or</span></div>
+          <a class="btn btn-wa btn-block" id="btnWaPay" href="#" target="_blank" rel="noopener">QR not working? Book on WhatsApp</a>
           <div class="center"><button class="link-btn" type="button" data-back="details">← Change details</button></div>
         </div>
 
@@ -486,6 +494,8 @@
             <div class="err" id="eUtr"></div>
           </div>
           <button class="btn btn-primary btn-block" type="submit" id="btnSubmitUtr">Submit booking</button>
+          <div class="or"><span>or</span></div>
+          <a class="btn btn-wa btn-block" id="btnWaUtr" href="#" target="_blank" rel="noopener">Can't find the UTR? Send a payment screenshot on WhatsApp</a>
           <div class="center"><button class="link-btn" type="button" data-back="pay">← Back to QR</button></div>
         </form>
 
@@ -497,7 +507,7 @@
           <p id="doneMsg" style="color:var(--muted)"></p>
           <div class="actions">
             <a class="btn btn-ghost btn-sm" id="btnCal" href="#" target="_blank" rel="noopener">Add to Google Calendar</a>
-            <a class="btn btn-ghost btn-sm" id="btnWa" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+            <a class="btn btn-wa btn-sm" id="btnWa" href="#" target="_blank" rel="noopener">Send payment screenshot on WhatsApp</a>
           </div>
         </div>
 
@@ -753,8 +763,33 @@ function showPanel(name) {
   $(".steps").style.visibility = name === "soldout" ? "hidden" : "visible";
   hideErr();
 }
-function showErr(msg) { const el = $("#globalErr"); el.textContent = msg; el.hidden = false; }
-function hideErr() { $("#globalErr").hidden = true; }
+function showErr(msg, waText) {
+  const el = $("#globalErr"); el.textContent = msg; el.hidden = false;
+  const wa = $("#btnWaErr");
+  wa.hidden = !waText;
+  if (waText) wa.href = waLink(waText);
+}
+function hideErr() { $("#globalErr").hidden = true; $("#btnWaErr").hidden = true; }
+
+/* ---------- WhatsApp: prefilled messages to the organizer ---------- */
+function waLink(text) { return `https://wa.me/${CONFIG.whatsapp}?text=` + encodeURIComponent(text); }
+function waBooking(intro, utr) {
+  return [
+    intro, "",
+    `Booking ref: ${booking.id}`,
+    `Name: ${booking.name}`,
+    `Phone: ${booking.phone}`,
+    `Email: ${booking.email}`,
+    `Seats: ${booking.qty}`,
+    `Amount: ${inr(booking.amount)}`,
+    utr ? `UTR: ${utr}` : "",
+    `Workshop: ${CONFIG.eventDate}, ${CONFIG.eventTime}`,
+  ].filter(l => l !== "").join("\n");
+}
+function refreshWaLinks() {
+  $("#btnWaPay").href = waLink(waBooking(`Hi! I'd like to book the ${CONFIG.brand} clay workshop, but the QR isn't working for me. Please help me pay.`));
+  $("#btnWaUtr").href = waLink(waBooking("Hi! I've paid for the clay workshop. Attaching my payment screenshot."));
+}
 function busy(btn, on, label) {
   btn.disabled = on;
   if (on) { btn.dataset.label = btn.innerHTML; btn.innerHTML = '<span class="spinner"></span> ' + (label || "Please wait…"); }
@@ -907,7 +942,7 @@ function finish(status) {
     action: "TEMPLATE", text: `${CONFIG.brand}: Clay Workshop`, dates: fmt(CONFIG.eventStart) + "/" + fmt(CONFIG.eventEnd),
     location: CONFIG.venue, details: `Booking ref ${booking.id}. ${CONFIG.mapUrl || ""}`,
   });
-  $("#btnWa").href = `https://wa.me/${CONFIG.whatsapp}?text=` + encodeURIComponent(`Hi! I just booked the clay workshop. Booking ref: ${booking.id}`);
+  $("#btnWa").href = waLink(waBooking("Hi! I just booked the clay workshop. Here's my payment screenshot.", booking.utr));
   showPanel("done");
   $("#checkout").scrollIntoView({ behavior: "smooth", block: "center" });
   loadStatus();
@@ -934,6 +969,7 @@ function init() {
     if (live.mode === "razorpay") return payWithRazorpay($("#btnContinue"));
     if (!booking.id) booking.id = newBookingId();
     renderQr();
+    refreshWaLinks();
     showPanel("pay");
     $("#checkout").scrollIntoView({ behavior: "smooth", block: "start" });
   });
@@ -957,14 +993,17 @@ function init() {
     const btn = $("#btnSubmitUtr");
     busy(btn, true, "Saving your booking…");
     try {
+      booking.utr = utr;
       const r = await api({ action: "book", bookingId: booking.id, name: booking.name, email: booking.email, phone: booking.phone, qty: booking.qty, amount: booking.amount, utr });
       busy(btn, false);
-      if (!r.ok) return showErr(r.error || "Something went wrong. Please try again.");
+      if (!r.ok) return showErr((r.error || "Something went wrong.") + " Your payment is safe: send us your booking on WhatsApp and we'll confirm it.",
+        waBooking("Hi! I paid for the clay workshop but the website showed an error. Please confirm my booking.", utr));
       booking.id = r.bookingId || booking.id;
       finish(r.status);
     } catch (err) {
       busy(btn, false);
-      showErr(`We couldn't reach the server. Your payment is safe. Please try again, or WhatsApp us your UTR and ref ${booking.id}.`);
+      showErr("We couldn't reach the server. Your payment is safe: send us your booking on WhatsApp and we'll confirm it.",
+        waBooking("Hi! I paid for the clay workshop but the website couldn't save my booking. Please confirm it.", utr));
     }
   });
 
