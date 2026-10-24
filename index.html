@@ -254,6 +254,8 @@
   #qr img, #qr canvas { width: 220px; height: 220px; }
   .upi-id { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-weight: 600; flex-wrap: wrap; justify-content: center; }
   .upi-id code { background: var(--white); border: 1px dashed var(--line); padding: 5px 10px; border-radius: 8px; font-size: .95rem; }
+  .ios-apps { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 12px; }
+  .ios-apps span { font-size: .9rem; color: var(--muted); width: 100%; text-align: center; }
   .pay-per-seat { font-size: .9rem; color: var(--muted); margin-top: -2px; }
   .pay-amount { font-family: "Fraunces", serif; font-size: 2rem; font-weight: 700; color: var(--terracotta); margin-top: 6px; }
   .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
@@ -569,8 +571,15 @@
               <a class="btn btn-primary btn-sm" id="btnUpiApp" href="#" hidden>Open UPI app</a>
               <button class="btn btn-ghost btn-sm" type="button" id="btnSaveQr">Save QR image</button>
             </div>
+            <!-- iPhone has no UPI app chooser (WhatsApp grabs upi:// links), so open each app directly -->
+            <div class="ios-apps" id="iosApps" hidden>
+              <span>Pay with</span>
+              <a class="btn btn-primary btn-sm" id="payGpay" href="#">GPay</a>
+              <a class="btn btn-primary btn-sm" id="payPhonepe" href="#">PhonePe</a>
+              <a class="btn btn-primary btn-sm" id="payPaytm" href="#">Paytm</a>
+            </div>
           </div>
-          <div class="note" id="mobileTip" hidden><strong>Paying from this phone?</strong> Tap <em>Save QR image</em>, open GPay or PhonePe, choose <em>Scan QR</em>, then pick the image from your gallery. If the <em>Open UPI app</em> button doesn't work, use this method.</div>
+          <div class="note" id="mobileTip" hidden><strong>Paying from this phone?</strong> Tap <em>Save QR image</em>, open GPay or PhonePe, choose <em>Scan QR</em>, then pick the image from your gallery. If the app button doesn't open your payment, use this method.</div>
           <div class="note">Please pay the <strong>exact amount</strong> shown. Pay only once, and keep the payment screen open: you'll need the 12-digit UTR / transaction ID in the next step.</div>
           <button class="btn btn-primary btn-block" type="button" id="btnPaid">I've paid, next</button>
           <div class="center"><button class="link-btn" type="button" data-back="details">← Change details</button></div>
@@ -719,6 +728,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const inr = n => "₹" + Number(n).toLocaleString("en-IN");
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 const DEMO = !CONFIG.apiUrl;
 
 let live = {
@@ -971,8 +981,14 @@ function renderQr() {
   $("#payUsd").textContent = `${inr(live.price)} per seat`;
   $("#payRef").textContent = booking.id;
   const app = $("#btnUpiApp");
-  app.hidden = !isMobile;
+  app.hidden = !isMobile || isIOS;
   app.href = upiUri();
+  // iPhone: one button per app, so the payment opens in that app instead of WhatsApp
+  $("#iosApps").hidden = !isIOS;
+  const query = upiUri().split("?")[1];
+  $("#payGpay").href = "gpay://upi/pay?" + query;
+  $("#payPhonepe").href = "phonepe://pay?" + query;
+  $("#payPaytm").href = "paytmmp://pay?" + query;
 }
 function saveQr() {
   const c = $("#qr canvas"), img = $("#qr img");
