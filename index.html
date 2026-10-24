@@ -6,7 +6,7 @@
 <title>Clay and Play · Clay Keychains & Fridge Magnets Workshop</title>
 <meta name="description" content="A hands-on, beginner-friendly clay workshop. Make your own clay keychains and fridge magnets — all materials included, take your creations home.">
 <meta property="og:title" content="Clay and Play · Clay Keychains & Fridge Magnets Workshop">
-<meta property="og:description" content="Beginner-friendly. All materials included. Early bird ₹599.">
+<meta property="og:description" content="Beginner-friendly. All materials included. Early bird ₹699.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#C85A32">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 56S6 40 6 22a13 13 0 0 1 26-4 13 13 0 0 1 26 4c0 18-26 34-26 34z' fill='%23C85A32'/%3E%3C/svg%3E">
@@ -74,8 +74,7 @@
   .btn-wa::before { content: ""; width: 18px; height: 18px; flex: 0 0 18px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z'/%3E%3C/svg%3E") center/contain no-repeat; }
   .receipt-box { display: flex; flex-direction: column; gap: 8px; text-align: left; background: #EAF7EF; border: 1px solid #BFE3CB; border-radius: 14px; padding: 16px; margin: 4px 0 14px; }
   .receipt-box span { font-size: .9rem; color: var(--muted); margin-bottom: 4px; }
-  .or { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: .85rem; margin: 14px 0; }
-  .or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+  .card-note { margin-top: 12px !important; font-size: .88rem; background: #FFF8E6; border-left: 3px solid var(--butter); padding: 8px 10px; border-radius: 6px; color: var(--charcoal) !important; }
   .btn-block { width: 100%; }
   .btn[disabled] { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
 
@@ -101,28 +100,59 @@
   }
 
   /* Hero */
-  .hero { padding: 64px 0 72px; overflow: hidden; }
-  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+  .hero { position: relative; overflow: hidden; padding: 88px 0 84px; min-height: min(760px, 90vh); display: flex; align-items: center;
+    background: var(--charcoal); color: #fff; }
+  .hero > .wrap { position: relative; z-index: 2; width: 100%; }
+  /* Moving photo background: --n slides, each on screen for 6s, crossfading with a slow zoom */
+  .hero-slides { --n: 5; position: absolute; inset: 0; z-index: 0; }
+  .hero-slides .slide { position: absolute; inset: -2%; background-size: cover; background-position: center; opacity: 0;
+    animation: heroSlide calc(var(--n) * 6s) linear infinite; animation-delay: calc(var(--i) * 6s); will-change: opacity, transform; }
+  @keyframes heroSlide {
+    0% { opacity: 0; transform: scale(1.14) translateX(1.5%); }
+    5% { opacity: 1; }
+    20% { opacity: 1; }
+    26% { opacity: 0; transform: scale(1.02) translateX(-1%); }
+    100% { opacity: 0; transform: scale(1.02); }
+  }
+  .hero-overlay { position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(28,22,19,.8) 0%, rgba(28,22,19,.55) 50%, rgba(28,22,19,.15) 100%),
+                linear-gradient(0deg, rgba(28,22,19,.45), transparent 45%); }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 56px; align-items: center; }
+  .hero-grid > div:first-child { animation: riseIn 1.2s cubic-bezier(.16,1,.3,1) both; }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  .hero h1 { color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,.35); }
+  .hero .eyebrow { color: var(--butter); }
+  .hero .lead { color: rgba(255,255,255,.86); }
   .badges { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 28px; padding: 0; list-style: none; }
-  .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; font-size: .9rem; font-weight: 500; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25);
+    backdrop-filter: blur(6px); color: #fff; padding: 7px 14px; border-radius: 999px; font-size: .9rem; font-weight: 500; }
   .badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sage); }
   .price-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
-  .price-now { font-family: "Fraunces", serif; font-size: 2.6rem; font-weight: 700; color: var(--terracotta); }
-  .price-was { font-size: 1.25rem; color: var(--muted); text-decoration: line-through; }
+  .price-now { font-family: "Fraunces", serif; font-size: 2.6rem; font-weight: 700; color: #FFB48F; }
+  .price-was { font-size: 1.25rem; color: rgba(255,255,255,.6); text-decoration: line-through; }
   .tag { background: var(--butter); color: var(--charcoal); font-size: .78rem; font-weight: 700; padding: 5px 10px; border-radius: 6px; letter-spacing: .04em; text-transform: uppercase; }
   .micro { font-size: .9rem; color: var(--muted); margin-top: 12px; }
-  .hero-art { position: relative; }
-  .hero-art svg { width: 100%; height: auto; display: block; }
+  .hero .micro { color: rgba(255,255,255,.75); }
+  /* Polaroid of Nirmala's own work */
+  .hero-photo { margin: 0; justify-self: center; width: min(320px, 100%); background: #fff; padding: 12px 12px 0; border-radius: 6px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.45); transform: rotate(3deg); animation: floaty 7s ease-in-out infinite; }
+  .hero-photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; display: block; border-radius: 2px; }
+  .hero-photo figcaption { font-family: "Fraunces", serif; font-style: italic; color: var(--charcoal); text-align: center; padding: 12px 0 14px; font-size: 1.05rem; }
+  @keyframes floaty { 0%, 100% { transform: rotate(3deg) translateY(0); } 50% { transform: rotate(1.5deg) translateY(-10px); } }
   @media (max-width: 860px) {
+    .hero { padding: 56px 0 60px; min-height: 0; }
     .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-    .hero-art { max-width: 280px; margin: 0 auto; order: -1; }
-    .hero { padding-top: 32px; }
+    .hero-photo { display: none; }
+    .hero-overlay { background: linear-gradient(0deg, rgba(28,22,19,.9) 0%, rgba(28,22,19,.72) 60%, rgba(28,22,19,.55) 100%); }
   }
+  /* Without motion, show the first photo still instead of nothing */
+  @media (prefers-reduced-motion: reduce) { .hero-slides .slide:first-child { opacity: 1; } }
 
   /* Seats meter */
   .seats { margin-top: 22px; max-width: 420px; }
   .seats-top { display: flex; justify-content: space-between; font-size: .9rem; font-weight: 600; margin-bottom: 6px; }
   .meter { height: 10px; background: var(--clay); border-radius: 99px; overflow: hidden; }
+  .hero .meter { background: rgba(255,255,255,.22); }
   .meter > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--terracotta), var(--blush)); border-radius: 99px; transition: width .8s ease; }
   .countdown { font-variant-numeric: tabular-nums; }
 
@@ -135,7 +165,7 @@
   .num { font-family: "Fraunces", serif; font-size: .9rem; color: var(--terracotta); font-weight: 700; margin-bottom: 6px; display: block; }
 
   /* Gallery */
-  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 180px; gap: 14px; margin-top: 36px; }
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 180px; grid-auto-flow: dense; gap: 14px; margin-top: 36px; }
   .gallery figure { position: relative; margin: 0; border-radius: 16px; overflow: hidden; background: var(--clay); box-shadow: var(--shadow); }
   .gallery figure.tall { grid-row: span 2; }
   .gallery figure.wide { grid-column: span 2; }
@@ -253,7 +283,7 @@
 <div class="demo-banner" id="demoBanner" hidden>Demo mode: bookings are not saved. Add your Apps Script URL in CONFIG to go live.</div>
 
 <div class="announce" role="note">
-  <span id="announceText">Early bird <strong>₹599</strong> ends soon · Only <strong data-seats-left>20</strong> seats in this batch</span>
+  <span id="announceText">Early bird <strong>₹699</strong> ends soon · Only <strong data-seats-left>20</strong> seats in this batch</span>
 </div>
 
 <header class="nav">
@@ -278,6 +308,15 @@
 <main id="top">
   <!-- HERO -->
   <section class="hero">
+    <!-- Moving background: photos crossfade with a slow zoom. Add/remove .slide divs and update --n in CSS -->
+    <div class="hero-slides" aria-hidden="true">
+      <div class="slide" style="--i:0;background-image:url(images/nirmala-magnets-wide.webp)"></div>
+      <div class="slide" style="--i:1;background-image:url(https://images.unsplash.com/photo-1579018024219-fa9694ca5698?w=1600&q=70&auto=format&fit=crop)"></div>
+      <div class="slide" style="--i:2;background-image:url(https://images.unsplash.com/photo-1782877757096-817463a79dcb?w=1600&q=70&auto=format&fit=crop)"></div>
+      <div class="slide" style="--i:3;background-image:url(https://images.unsplash.com/photo-1703294114247-46a556f4ef82?w=1600&q=70&auto=format&fit=crop)"></div>
+      <div class="slide" style="--i:4;background-image:url(https://images.unsplash.com/photo-1781389004856-264bd817ce80?w=1600&q=70&auto=format&fit=crop)"></div>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">Hands-on clay workshop · <span data-event-date>Saturday, 31 Oct 2026</span></span>
@@ -290,8 +329,8 @@
         </ul>
 
         <div class="price-row">
-          <span class="price-now" data-price>₹599</span>
-          <span class="price-was" data-was>₹699</span>
+          <span class="price-now" data-price>₹699</span>
+          <span class="price-was" data-was>₹799</span>
           <span class="tag" data-tag>Early bird</span>
         </div>
         <a class="btn btn-primary" href="#book">Reserve my seat <span aria-hidden="true">→</span></a>
@@ -303,48 +342,10 @@
         </div>
       </div>
 
-      <div class="hero-art" aria-hidden="true">
-        <!-- Illustration: a heart magnet, a daisy keychain and a smiley magnet -->
-        <svg viewBox="0 0 420 400">
-          <circle cx="210" cy="205" r="175" fill="#E8DCC4"/>
-          <circle cx="120" cy="90" r="10" fill="#F2D27A"/>
-          <circle cx="345" cy="320" r="8" fill="#9CAF88"/>
-          <circle cx="330" cy="95" r="6" fill="#EFB3A3"/>
-          <!-- keychain ring + chain -->
-          <circle cx="250" cy="62" r="24" fill="none" stroke="#8F857D" stroke-width="7"/>
-          <path d="M250 86v12m0 8v12m0 8v10" stroke="#8F857D" stroke-width="6" stroke-linecap="round"/>
-          <!-- daisy -->
-          <g transform="translate(250 190)">
-            <g fill="#FFFFFF" stroke="#E4D9C7" stroke-width="2">
-              <ellipse rx="22" ry="40" cy="-38"/>
-              <ellipse rx="22" ry="40" cy="-38" transform="rotate(60)"/>
-              <ellipse rx="22" ry="40" cy="-38" transform="rotate(120)"/>
-              <ellipse rx="22" ry="40" cy="-38" transform="rotate(180)"/>
-              <ellipse rx="22" ry="40" cy="-38" transform="rotate(240)"/>
-              <ellipse rx="22" ry="40" cy="-38" transform="rotate(300)"/>
-            </g>
-            <circle r="30" fill="#F2D27A"/>
-            <circle cx="-10" cy="-4" r="3.5" fill="#2A2421"/>
-            <circle cx="10" cy="-4" r="3.5" fill="#2A2421"/>
-            <path d="M-9 8q9 8 18 0" stroke="#2A2421" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <circle cx="-19" cy="6" r="5" fill="#EFB3A3" opacity=".8"/>
-            <circle cx="19" cy="6" r="5" fill="#EFB3A3" opacity=".8"/>
-          </g>
-          <!-- heart magnet -->
-          <g transform="translate(120 280) rotate(-12)">
-            <path d="M0 48S-62 10-62-28a31 31 0 0 1 62-8 31 31 0 0 1 62 8C62 10 0 48 0 48z" fill="#C85A32"/>
-            <path d="M-38-30a16 16 0 0 1 18-12" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".45" fill="none"/>
-          </g>
-          <!-- smiley round magnet -->
-          <g transform="translate(330 285) rotate(10)">
-            <circle r="44" fill="#9CAF88"/>
-            <circle r="44" fill="none" stroke="#7F946C" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/>
-            <circle cx="-13" cy="-6" r="4" fill="#2A2421"/>
-            <circle cx="13" cy="-6" r="4" fill="#2A2421"/>
-            <path d="M-12 9q12 11 24 0" stroke="#2A2421" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-          </g>
-        </svg>
-      </div>
+      <figure class="hero-photo">
+        <img src="images/nirmala-magnets.webp" alt="Colourful clay fridge magnets made by Nirmala: a fox, a cat, ladybugs, a starfish and an elephant" width="817" height="1452">
+        <figcaption>Made by Nirmala ✨</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -378,6 +379,7 @@
           <span class="num">03</span>
           <h3>Paint, detail &amp; varnish</h3>
           <p>Add fine details, paint and a protective gloss coat so your pieces stay bright and last for years.</p>
+          <p class="card-note">Note: let bigger clay sculptures air dry for 24 hours.</p>
         </article>
       </div>
     </div>
@@ -392,7 +394,7 @@
         <p class="lead">Keychains, little animals and cute characters: this is the kind of thing you'll learn to shape, colour and finish.</p>
       </div>
       <div class="gallery" id="galleryGrid"></div>
-      <p class="credit">Inspiration photos from Unsplash by <span id="galleryCredits"></span>.</p>
+      <p class="credit">First photo: Nirmala's own work. Other inspiration photos from Unsplash by <span id="galleryCredits"></span>.</p>
     </div>
   </section>
 
@@ -409,8 +411,8 @@
         <li><span class="dot">🛠️</span><div><strong>Sculpting tool kit</strong><span class="sub">Shapers, cutters, texture stamps</span></div></li>
         <li><span class="dot">🔑</span><div><strong>Keychain rings &amp; magnets</strong><span class="sub">Hardware for every piece you make</span></div></li>
         <li><span class="dot">🎨</span><div><strong>Paints &amp; gloss varnish</strong><span class="sub">For colour, detail and a lasting finish</span></div></li>
-        <li><span class="dot">🎁</span><div><strong>Take-home box</strong><span class="sub">Safe packaging plus a care card</span></div></li>
-        <li><span class="dot">☕</span><div><strong>Refreshments</strong><span class="sub">Tea, coffee and snacks during the session</span></div></li>
+        <li><span class="dot">🎁</span><div><strong>Take-home carry bag</strong><span class="sub">Carry your creations home safely, with a care card</span></div></li>
+        <li><span class="dot">☕</span><div><strong>Refreshments</strong><span class="sub">A hot or cold latte during the session</span></div></li>
       </ul>
     </div>
   </section>
@@ -432,7 +434,7 @@
         <div class="avatar" data-host-initial aria-hidden="true">N</div>
         <div>
           <h3 style="margin:0 0 4px" data-host-name>Nirmala</h3>
-          <p data-host-bio>Clay artist and your host for the day. I've been making clay charms for years and love helping first-timers make something they're proud of.</p>
+          <p data-host-bio>Clay enthusiast and your host for the day.</p>
         </div>
       </div>
     </div>
@@ -483,8 +485,8 @@
           </div>
           <input class="hp" name="website" id="fWebsite" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="summary">
-            <div><div style="font-weight:600">Total</div><div class="hint" style="color:var(--muted);font-size:.85rem"><span id="sumLine">1 × ₹599</span> <span data-tag-inline></span></div></div>
-            <div class="total" id="sumTotal">₹599</div>
+            <div><div style="font-weight:600">Total</div><div class="hint" style="color:var(--muted);font-size:.85rem"><span id="sumLine">1 × ₹699</span> <span data-tag-inline></span></div></div>
+            <div class="total" id="sumTotal">₹699</div>
           </div>
           <button class="btn btn-primary btn-block" type="submit" id="btnContinue">Continue to payment</button>
           <p class="micro center" style="margin-bottom:0">You'll get a confirmation email once your seat is confirmed.</p>
@@ -495,7 +497,7 @@
           <h3>Scan &amp; pay</h3>
           <div class="qr-box">
             <div style="font-size:.9rem;color:var(--muted)">Amount to pay</div>
-            <div class="pay-amount" id="payAmount">₹599</div>
+            <div class="pay-amount" id="payAmount">₹699</div>
             <div style="font-size:.85rem;color:var(--muted);margin-bottom:14px">Booking ref <strong id="payRef">—</strong></div>
             <div id="qr" role="img" aria-label="UPI payment QR code"></div>
             <div class="upi-id">UPI ID <code id="upiId">—</code> <button class="btn btn-ghost btn-sm" type="button" id="btnCopyUpi">Copy</button></div>
@@ -507,8 +509,6 @@
           <div class="note" id="mobileTip" hidden><strong>Paying from this phone?</strong> Tap <em>Save QR image</em>, open GPay or PhonePe, choose <em>Scan QR</em>, then pick the image from your gallery. If the <em>Open UPI app</em> button doesn't work, use this method.</div>
           <div class="note">Please pay the <strong>exact amount</strong> shown. Pay only once, and keep the payment screen open: you'll need the 12-digit UTR / transaction ID in the next step.</div>
           <button class="btn btn-primary btn-block" type="button" id="btnPaid">I've paid, next</button>
-          <div class="or"><span>or</span></div>
-          <a class="btn btn-wa btn-block" id="btnWaPay" href="#" target="_blank" rel="noopener">QR not working? Book on WhatsApp</a>
           <div class="center"><button class="link-btn" type="button" data-back="details">← Change details</button></div>
         </div>
 
@@ -523,8 +523,6 @@
             <div class="err" id="eUtr"></div>
           </div>
           <button class="btn btn-primary btn-block" type="submit" id="btnSubmitUtr">Submit booking</button>
-          <div class="or"><span>or</span></div>
-          <a class="btn btn-wa btn-block" id="btnWaUtr" href="#" target="_blank" rel="noopener">Can't find the UTR? Send a payment screenshot on WhatsApp</a>
           <div class="center"><button class="link-btn" type="button" data-back="pay">← Back to QR</button></div>
         </form>
 
@@ -568,7 +566,7 @@
         </details>
         <details>
           <summary>Can I take my creations home the same day?</summary>
-          <div class="ans">Yes. You'll take your pieces home in a protective box. Clay keeps hardening for 24–48 hours, so keep them flat and away from water during that time. A care card in the box explains everything.</div>
+          <div class="ans">Yes. You'll take your pieces home in a carry bag. Air-dry clay keeps hardening after the workshop: bigger sculptures need to air dry for at least 24 hours before you handle them much. Keep them flat and away from water while they dry. The care card in your bag explains everything.</div>
         </details>
         <details>
           <summary>How many pieces will I make?</summary>
@@ -580,7 +578,7 @@
         </details>
         <details>
           <summary>What is the early bird price?</summary>
-          <div class="ans">Seats booked before the early bird deadline cost <strong data-early-price>₹599</strong> instead of <strong data-regular-price>₹699</strong>. The price shown in the booking form is always the current one.</div>
+          <div class="ans">Seats booked before the early bird deadline cost <strong data-early-price>₹699</strong> instead of <strong data-regular-price>₹799</strong>. The price shown in the booking form is always the current one.</div>
         </details>
         <details>
           <summary>How is my seat confirmed after paying by UPI?</summary>
@@ -617,7 +615,7 @@
   </div>
 </footer>
 
-<div class="sticky-cta" id="stickyCta"><a class="btn btn-primary btn-block" href="#book">Book your seat · <span data-price>₹599</span></a></div>
+<div class="sticky-cta" id="stickyCta"><a class="btn btn-primary btn-block" href="#book">Book your seat · <span data-price>₹699</span></a></div>
 
 <script>
 /* =====================================================================
@@ -636,7 +634,7 @@ const CONFIG = {
   venue: "Venue shared on WhatsApp after booking",
   mapUrl: "",                         // Google Maps share link (leave "" until you have one)
   hostName: "Nirmala",
-  hostBio: "Clay artist and your host for the day. I love helping first-timers make something they're proud of.",
+  hostBio: "Clay enthusiast and your host for the day.",
 
   upiId: "8310928904@ybl",            // your UPI ID (GPay → Profile → UPI ID)
   upiName: "Nirmala",                 // name shown in the payer's app
@@ -644,8 +642,8 @@ const CONFIG = {
   email: "niminsr@gmail.com",
 
   // Demo-mode fallbacks (live values come from the Apps Script)
-  earlyPrice: 599,
-  regularPrice: 699,
+  earlyPrice: 699,
+  regularPrice: 799,
   earlyBirdEnds: "2026-10-28T23:59:00+05:30",
   seatsTotal: 20,
   maxSeatsPerBooking: 4,
@@ -654,14 +652,13 @@ const CONFIG = {
 
 /* Gallery photos (Unsplash license: free to use, hotlinked as Unsplash asks). Swap in your own later. */
 const GALLERY = [
+  { src: "images/nirmala-magnets.webp", cap: "Fridge magnets made by Nirmala", size: "tall" },
   { id: "photo-1579018024219-fa9694ca5698", cap: "Rolling soft, colourful clay", by: "jwatson95", size: "tall" },
   { id: "photo-1703294114247-46a556f4ef82", cap: "Shaping a tiny animal", by: "crazyivan_ita" },
   { id: "photo-1679454598327-79a2014013cb", cap: "A clay keychain charm", by: "coppertistwu" },
   { id: "photo-1782877757096-817463a79dcb", cap: "Palm-sized and adorable", by: "bijoyabraham", size: "tall" },
   { id: "photo-1781389004856-264bd817ce80", cap: "Adding details with tools", by: "sebas_royy", size: "wide" },
-  { id: "photo-1569349503066-95fdafca1a73", cap: "Cute clay toys", by: "raspopovamarisha" },
   { id: "photo-1650197642892-888c103e8f20", cap: "A whole table of handmade animals", by: "sk00leks", size: "wide" },
-  { id: "photo-1786551348882-cb2776d0e4af", cap: "Little characters with big personality", by: "alchimiste_cici" },
 ];
 
 /* ===================================================================== */
@@ -711,13 +708,17 @@ function fillStatic() {
 
 function renderGallery() {
   const src = (id, w) => `https://images.unsplash.com/${id}?w=${w}&q=70&auto=format&fit=crop`;
-  $("#galleryGrid").innerHTML = GALLERY.map(g => `
+  $("#galleryGrid").innerHTML = GALLERY.map(g => {
+    // Own photos use `src`; Unsplash ones use `id` with responsive sizes
+    const img = g.src ? `src="${g.src}"`
+      : `src="${src(g.id, 600)}" srcset="${src(g.id, 400)} 400w, ${src(g.id, 800)} 800w" sizes="(max-width: 860px) 50vw, 25vw"`;
+    return `
     <figure class="${g.size || ""}">
-      <img src="${src(g.id, 600)}" srcset="${src(g.id, 400)} 400w, ${src(g.id, 800)} 800w" sizes="(max-width: 860px) 50vw, 25vw"
-        alt="${g.cap}" loading="lazy" decoding="async">
+      <img ${img} alt="${g.cap}" loading="lazy" decoding="async">
       <figcaption>${g.cap}</figcaption>
-    </figure>`).join("");
-  const people = [...new Set(GALLERY.map(g => g.by))];
+    </figure>`;
+  }).join("");
+  const people = [...new Set(GALLERY.filter(g => g.by).map(g => g.by))];
   $("#galleryCredits").innerHTML = people.map(p =>
     `<a href="https://unsplash.com/@${p}?utm_source=clay_and_play&utm_medium=referral" target="_blank" rel="noopener">@${p}</a>`).join(", ");
 }
@@ -843,10 +844,6 @@ function waBooking(intro, utr) {
     utr ? `UTR: ${utr}` : "",
     `Workshop: ${CONFIG.eventDate}, ${CONFIG.eventTime}`,
   ].filter(l => l !== "").join("\n");
-}
-function refreshWaLinks() {
-  $("#btnWaPay").href = waLink(waBooking(`Hi! I'd like to book the ${CONFIG.brand} clay workshop, but the QR isn't working for me. Please help me pay.`));
-  $("#btnWaUtr").href = waLink(waBooking("Hi! I've paid for the clay workshop. Attaching my payment screenshot."));
 }
 function busy(btn, on, label) {
   btn.disabled = on;
@@ -1028,7 +1025,6 @@ function init() {
     if (live.mode === "razorpay") return payWithRazorpay($("#btnContinue"));
     if (!booking.id) booking.id = newBookingId();
     renderQr();
-    refreshWaLinks();
     showPanel("pay");
     $("#checkout").scrollIntoView({ behavior: "smooth", block: "start" });
   });
