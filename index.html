@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clay and Play · Clay Keychains & Fridge Magnets Workshop</title>
-<meta name="description" content="A hands-on, beginner-friendly clay workshop. Make your own clay keychains and fridge magnets — all materials included, take your creations home.">
-<meta property="og:title" content="Clay and Play · Clay Keychains & Fridge Magnets Workshop">
+<title>Imperfect but Yours · Clay and Play Workshop</title>
+<meta name="description" content="Imperfect but Yours: a hands-on, beginner-friendly clay workshop. Make your own clay charms, fridge magnets and keychains. All materials included.">
+<meta property="og:title" content="Imperfect but Yours · Clay and Play">
 <meta property="og:description" content="Beginner-friendly. All materials included. Early bird ₹699.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#C85A32">
@@ -34,6 +34,7 @@
     --shadow: 0 1px 2px rgba(42,36,33,.06), 0 8px 24px rgba(42,36,33,.08);
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   section[id], #checkout { scroll-margin-top: 84px; }
   body {
@@ -104,7 +105,7 @@
     background: var(--charcoal); color: #fff; }
   .hero > .wrap { position: relative; z-index: 2; width: 100%; }
   /* Moving photo background: --n slides, each on screen for 6s, crossfading with a slow zoom */
-  .hero-slides { --n: 5; position: absolute; inset: 0; z-index: 0; }
+  .hero-slides { --n: 3; position: absolute; inset: 0; z-index: 0; }
   .hero-slides .slide { position: absolute; inset: -2%; background-size: cover; background-position: center; opacity: 0;
     animation: heroSlide calc(var(--n) * 6s) linear infinite; animation-delay: calc(var(--i) * 6s); will-change: opacity, transform; }
   @keyframes heroSlide {
@@ -169,6 +170,8 @@
   .gallery figure { position: relative; margin: 0; border-radius: 16px; overflow: hidden; background: var(--clay); box-shadow: var(--shadow); }
   .gallery figure.tall { grid-row: span 2; }
   .gallery figure.wide { grid-column: span 2; }
+  .gallery figure.full { grid-column: 1 / -1; grid-row: span 2; background: #EDE6DA; }
+  .gallery figure.full img { object-fit: contain; height: 100%; }
   .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
   .gallery figure:hover img { transform: scale(1.05); }
   .gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 12px; color: #fff; font-size: .9rem; font-weight: 600;
@@ -181,6 +184,16 @@
   .credit a { color: var(--muted); }
   @media (max-width: 860px) { .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; gap: 10px; } }
 
+  /* More ideas grid */
+  .ideas-grid { columns: 3 220px; column-gap: 16px; margin: 36px auto 0; max-width: 960px; }
+  .ideas-grid figure { break-inside: avoid; margin: 0 0 16px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+  .ideas-grid img { width: 100%; height: auto; display: block; }
+  .ideas-grid figcaption { padding: 10px 14px; font-size: .9rem; font-weight: 600; color: var(--charcoal); }
+  @media (max-width: 560px) { .ideas-grid { columns: 2 150px; column-gap: 10px; max-width: 100%; } .ideas-grid figure { margin-bottom: 10px; } .ideas-grid figcaption { font-size: .82rem; padding: 8px 10px; } }
+
+  /* Handmade feel pills (light background) */
+  .feel { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 26px; }
+  .feel span { background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 10px 18px; font-weight: 600; box-shadow: var(--shadow); }
   /* Included */
   .band { background: var(--clay); }
   .included { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; list-style: none; padding: 0; }
@@ -225,6 +238,8 @@
     width: 100%; padding: 13px 14px; border: 1.5px solid var(--line); border-radius: 12px;
     font: inherit; background: var(--stone); color: var(--charcoal); transition: border-color .2s, background .2s;
   }
+  .req { color: var(--warn); }
+  .opt { color: var(--muted); font-weight: 400; font-size: .85rem; }
   .field input:focus, .field select:focus { outline: none; border-color: var(--terracotta); background: var(--white); }
   .field input[aria-invalid="true"] { border-color: var(--warn); background: #FFF6F2; }
   .field .err { color: var(--warn); font-size: .85rem; margin-top: 5px; min-height: 0; }
@@ -239,6 +254,7 @@
   #qr img, #qr canvas { width: 220px; height: 220px; }
   .upi-id { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-weight: 600; flex-wrap: wrap; justify-content: center; }
   .upi-id code { background: var(--white); border: 1px dashed var(--line); padding: 5px 10px; border-radius: 8px; font-size: .95rem; }
+  .pay-per-seat { font-size: .9rem; color: var(--muted); margin-top: -2px; }
   .pay-amount { font-family: "Fraunces", serif; font-size: 2rem; font-weight: 700; color: var(--terracotta); margin-top: 6px; }
   .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
   .note { font-size: .88rem; color: var(--muted); background: #FFF8E6; border: 1px solid #F2E2B0; padding: 12px 14px; border-radius: 12px; margin-bottom: 16px; }
@@ -315,16 +331,14 @@
     <!-- Moving background: photos crossfade with a slow zoom. Add/remove .slide divs and update --n in CSS -->
     <div class="hero-slides" aria-hidden="true">
       <div class="slide" style="--i:0;background-image:url(images/nirmala-magnets-wide.webp)"></div>
-      <div class="slide" style="--i:1;background-image:url(https://images.unsplash.com/photo-1579018024219-fa9694ca5698?w=1600&q=70&auto=format&fit=crop)"></div>
-      <div class="slide" style="--i:2;background-image:url(https://images.unsplash.com/photo-1782877757096-817463a79dcb?w=1600&q=70&auto=format&fit=crop)"></div>
-      <div class="slide" style="--i:3;background-image:url(https://images.unsplash.com/photo-1703294114247-46a556f4ef82?w=1600&q=70&auto=format&fit=crop)"></div>
-      <div class="slide" style="--i:4;background-image:url(https://images.unsplash.com/photo-1781389004856-264bd817ce80?w=1600&q=70&auto=format&fit=crop)"></div>
+      <div class="slide" style="--i:1;background-image:url(https://images.unsplash.com/photo-1703294114247-46a556f4ef82?w=1600&q=70&auto=format&fit=crop)"></div>
+      <div class="slide" style="--i:2;background-image:url(https://images.unsplash.com/photo-1781389004856-264bd817ce80?w=1600&q=70&auto=format&fit=crop)"></div>
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">Hands-on clay workshop · <span data-event-date>Saturday, 31 Oct 2026</span></span>
-        <h1>Make your own clay keychains &amp; fridge magnets</h1>
+        <span class="eyebrow">Imperfect but Yours · Hands-on clay workshop · <span data-event-date>Saturday, 31 Oct 2026</span></span>
+        <h1>Make your own clay charms, fridge magnets &amp; keychains</h1>
         <p class="lead">Two fun hours of shaping, colouring and finishing tiny clay charms. No experience needed. You'll leave with handmade pieces you'll actually use, or gift.</p>
         <ul class="badges">
           <li class="badge">Beginner friendly</li>
@@ -353,12 +367,27 @@
     </div>
   </section>
 
+  <!-- HANDMADE: why this workshop -->
+  <section class="section" id="handmade" style="padding-bottom:40px">
+    <div class="wrap center">
+      <span class="eyebrow">Made by hand</span>
+      <h2>Handmade is rare. Make something that's yours.</h2>
+      <p class="lead">Ready-made things are everywhere. Handmade ones are rare, and making something with your own hands deserves to be appreciated. This is a fun, beginner-friendly workshop where you smile, play, sip coffee and create something AI can't replace. It makes people happy, and it makes them feel like a kid again.</p>
+      <div class="feel">
+        <span>😊 Smile and play</span>
+        <span>☕ Sip coffee as you create</span>
+        <span>🤲 Make it with your own hands</span>
+        <span>🧸 Feel like a kid again</span>
+      </div>
+    </div>
+  </section>
+
   <!-- WHAT YOU'LL MAKE -->
   <section class="section" id="make" style="padding-top:40px">
     <div class="wrap center">
       <span class="eyebrow">What you'll make</span>
       <h2>Small charms, big satisfaction</h2>
-      <p class="lead">We go step by step, from a lump of soft clay to a finished, varnished piece.</p>
+      <p class="lead">We go step by step, from a lump of soft clay to a masterpiece made by you.</p>
       <div class="grid-3" style="text-align:left">
         <article class="card">
           <div class="icon" style="background:#FBE7DF">
@@ -407,6 +436,30 @@
     </div>
   </section>
 
+  <!-- MORE IDEAS: shared by Nirmala (social media and Pinterest), cropped to remove app screens -->
+  <section class="section" id="ideas" style="padding-top:20px">
+    <div class="wrap">
+      <div class="center">
+        <span class="eyebrow">More ideas</span>
+        <h2>Things you could make in class</h2>
+        <p class="lead">Magnets, keychains, photo holders and little characters. Pick a favourite and we'll help you make it.</p>
+      </div>
+      <div class="ideas-grid">
+        <figure><img src="images/ideas-sea-magnets.webp" alt="Sea-creature fridge magnets" loading="lazy" decoding="async"><figcaption>Sea-creature magnets</figcaption></figure>
+        <figure><img src="images/ideas-yin-yang-cats.webp" alt="Yin-yang cat keychains in black and white" loading="lazy" decoding="async"><figcaption>Yin-yang cat keychains</figcaption></figure>
+        <figure><img src="images/ideas-puzzle-keychains.webp" alt="Pastel puzzle-piece keychains with faces" loading="lazy" decoding="async"><figcaption>Puzzle-piece keychains</figcaption></figure>
+        <figure><img src="images/ideas-sea-set.webp" alt="Painted sea-life charms: shell, starfish, anchor and whale tail" loading="lazy" decoding="async"><figcaption>Painted sea-life charms</figcaption></figure>
+        <figure><img src="images/ideas-envelope-keychain.webp" alt="Love-letter keychain with a red heart" loading="lazy" decoding="async"><figcaption>Love-letter keychain</figcaption></figure>
+        <figure><img src="images/ideas-spiderman-keychain.webp" alt="Painted character keychain" loading="lazy" decoding="async"><figcaption>Character keychain</figcaption></figure>
+        <figure><img src="images/ideas-photo-hearts.webp" alt="Photo holders with little clay hearts" loading="lazy" decoding="async"><figcaption>Photo holders with hearts</figcaption></figure>
+        <figure><img src="images/ideas-flower-holder.webp" alt="Orange flower photo holder" loading="lazy" decoding="async"><figcaption>Flower photo holder</figcaption></figure>
+        <figure><img src="images/ideas-clay-bow.webp" alt="Clay bow candle holder" loading="lazy" decoding="async"><figcaption>Clay bow holder</figcaption></figure>
+        <figure><img src="images/ideas-jersey-magnets.webp" alt="Painted jersey fridge magnets" loading="lazy" decoding="async"><figcaption>Jersey magnets</figcaption></figure>
+      </div>
+      <p class="credit">Ideas shared by Nirmala from Pinterest and social media. Photos belong to their original makers and are shown for inspiration only.</p>
+    </div>
+  </section>
+
   <!-- INCLUDED -->
   <section class="section band" id="included">
     <div class="wrap">
@@ -436,7 +489,7 @@
       <div class="details">
         <div><div class="k">Date</div><div class="v" data-event-date>Saturday, 31 Oct 2026</div></div>
         <div><div class="k">Time</div><div class="v" data-event-time>10:00 AM – 12:00 PM</div></div>
-        <div><div class="k">Venue</div><div class="v"><a data-venue-link href="#" target="_blank" rel="noopener"><span data-venue>Venue shared on WhatsApp after booking</span></a></div></div>
+        <div><div class="k">Venue</div><div class="v"><a data-venue-link href="#" target="_blank" rel="noopener"><span data-venue>Amara Timeless Indian Desserts, HAL Old Airport Road, near Indiranagar, Bengaluru</span></a></div></div>
         <div><div class="k">Batch size</div><div class="v"><span data-seats-total>20</span> people</div></div>
       </div>
       <div class="host">
@@ -455,41 +508,42 @@
       <div>
         <span class="eyebrow">Book your seat</span>
         <h2>Reserve your spot in 2 minutes</h2>
-        <p class="lead">Pay by UPI with any app (GPay, PhonePe, Paytm or your bank app). We'll email you as soon as your seat is confirmed.</p>
+        <p class="lead">Pay by UPI with any app (GPay, PhonePe, Paytm or your bank app). We check every payment by hand, and you'll get a WhatsApp notification once it's verified.</p>
         <ul class="perks">
           <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#9CAF88"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span>All-inclusive price, no hidden charges</span></li>
           <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#9CAF88"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span>Book up to <span data-max-seats>4</span> seats at once for friends &amp; family</span></li>
-          <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#9CAF88"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span>Free reschedule up to 48 hours before the session</span></li>
+          <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#9CAF88"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg><span>No cancellations or refunds, but you can transfer your seat to someone else if you tell us in advance</span></li>
         </ul>
       </div>
 
       <div class="checkout" id="checkout">
         <ol class="steps" aria-hidden="true"><li class="on"></li><li></li><li></li></ol>
         <div class="alert alert-err" id="globalErr" role="alert" hidden></div>
-        <a class="btn btn-wa btn-block" id="btnWaErr" href="#" target="_blank" rel="noopener" hidden style="margin:-6px 0 16px">Send my booking on WhatsApp</a>
+        <a class="btn btn-wa btn-block" id="btnWaErr" href="#" target="_blank" rel="noopener" hidden style="margin:-6px 0 16px">Share payment screenshot on WhatsApp</a>
 
         <!-- STEP 1: details -->
         <form class="panel" id="panelDetails" novalidate>
           <h3>Your details</h3>
           <div class="field">
-            <label for="fName">Full name</label>
+            <label for="fName">Full name <span class="req">*</span></label>
             <input id="fName" name="name" autocomplete="name" required>
             <div class="err" id="eName"></div>
           </div>
           <div class="field">
-            <label for="fEmail">Email address</label>
+            <label for="fEmail">Email address <span class="opt">(optional)</span></label>
             <input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" required>
             <div class="err" id="eEmail"></div>
           </div>
           <div class="row-2">
             <div class="field">
-              <label for="fPhone">WhatsApp number</label>
+              <label for="fPhone">WhatsApp number <span class="req">*</span></label>
               <input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="98765 43210" required>
               <div class="err" id="ePhone"></div>
             </div>
             <div class="field">
-              <label for="fQty">Seats</label>
-              <select id="fQty" name="qty"></select>
+              <label for="fQty">Seats <span class="req">*</span></label>
+              <select id="fQty" name="qty" required aria-describedby="eQty"></select>
+              <div class="err" id="eQty"></div>
             </div>
           </div>
           <input class="hp" name="website" id="fWebsite" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -498,7 +552,7 @@
             <div class="total" id="sumTotal">₹699</div>
           </div>
           <button class="btn btn-primary btn-block" type="submit" id="btnContinue">Continue to payment</button>
-          <p class="micro center" style="margin-bottom:0">You'll get a confirmation email once your seat is confirmed.</p>
+          <p class="micro center" style="margin-bottom:0">After we verify your payment by hand, you'll get a WhatsApp notification.</p>
         </form>
 
         <!-- STEP 2: pay (UPI) -->
@@ -507,6 +561,7 @@
           <div class="qr-box">
             <div style="font-size:.9rem;color:var(--muted)">Amount to pay</div>
             <div class="pay-amount" id="payAmount">₹699</div>
+            <div class="pay-per-seat" id="payUsd">₹699 per seat</div>
             <div style="font-size:.85rem;color:var(--muted);margin-bottom:14px">Booking ref <strong id="payRef">—</strong></div>
             <div id="qr" role="img" aria-label="UPI payment QR code"></div>
             <div class="upi-id">UPI ID <code id="upiId">—</code> <button class="btn btn-ghost btn-sm" type="button" id="btnCopyUpi">Copy</button></div>
@@ -521,18 +576,12 @@
           <div class="center"><button class="link-btn" type="button" data-back="details">← Change details</button></div>
         </div>
 
-        <!-- STEP 3: UTR -->
+        <!-- STEP 3: did you pay? -->
         <form class="panel" id="panelUtr" hidden novalidate>
-          <h3>Confirm your payment</h3>
-          <p style="color:var(--muted)">Enter the <strong>12-digit UTR</strong> (also called UPI Ref No. or Transaction ID) from your payment app's receipt.</p>
-          <div class="field">
-            <label for="fUtr">UTR / UPI reference number</label>
-            <input id="fUtr" name="utr" inputmode="numeric" maxlength="16" placeholder="e.g. 431245678901" autocomplete="off" required>
-            <div class="hint">GPay: open the payment → <em>UPI transaction ID</em>. PhonePe: <em>UTR</em>. Paytm: <em>UPI Ref No.</em></div>
-            <div class="err" id="eUtr"></div>
-          </div>
-          <button class="btn btn-primary btn-block" type="submit" id="btnSubmitUtr">Submit booking</button>
-          <div class="center"><button class="link-btn" type="button" data-back="pay">← Back to QR</button></div>
+          <h3>Have you paid <span id="askAmount">₹699</span>?</h3>
+          <p style="color:var(--muted)">Once you've paid with your UPI app, tap <strong>Yes, I've paid</strong>. Then kindly share a screenshot of your payment with Nirmala on <a href="https://wa.me/918310928904" target="_blank" rel="noopener"><strong>WhatsApp +91 83109 28904</strong></a>. We need it to hold your seat. We check every payment by hand and will message you on WhatsApp as soon as it's verified. Thank you for your patience!</p>
+          <button class="btn btn-primary btn-block" type="submit" id="btnSubmitUtr">Yes, I've paid</button>
+          <div class="center"><button class="link-btn" type="button" data-back="pay">← Not yet, back to the QR</button></div>
         </form>
 
         <!-- STEP 4: done -->
@@ -543,7 +592,7 @@
           <p id="doneMsg" style="color:var(--muted)"></p>
           <div class="receipt-box">
             <strong>One last step: share your payment receipt 📸</strong>
-            <span>Take a screenshot of the payment success screen in your UPI app, then tap below and attach it. This lets us confirm your seat faster.</span>
+            <span>Kindly take a screenshot of the payment success screen in your UPI app and share it with Nirmala on <a href="https://wa.me/918310928904" target="_blank" rel="noopener"><strong>WhatsApp +91 83109 28904</strong></a> (tap below). We need it to hold your seat. Thank you!</span>
             <a class="btn btn-wa btn-block" id="btnWa" href="#" target="_blank" rel="noopener">Share payment receipt on WhatsApp</a>
           </div>
           <div class="actions">
@@ -583,19 +632,19 @@
         </details>
         <details>
           <summary>What should I wear? Is it suitable for kids?</summary>
-          <div class="ans">Wear comfortable clothes you don't mind getting a little paint on. Aprons are provided. Children aged 8 and above are welcome with a booked seat; under-12s should be accompanied by an adult.</div>
+          <div class="ans">Wear comfortable clothes you don't mind getting a little paint on. Children aged 8 and above are welcome with a booked seat; under-12s should be accompanied by an adult.</div>
         </details>
         <details>
           <summary>What is the early bird price?</summary>
           <div class="ans">Seats booked before the early bird deadline cost <strong data-early-price>₹699</strong> instead of <strong data-regular-price>₹799</strong>. The price shown in the booking form is always the current one.</div>
         </details>
         <details>
-          <summary>How is my seat confirmed after paying by UPI?</summary>
-          <div class="ans">After you pay and submit your UTR number, we match it with our bank record and email your confirmation, usually within a few hours. Your seat is held as soon as you submit.</div>
+          <summary>How will I know my payment is verified?</summary>
+          <div class="ans">After you pay and tap "Yes, I've paid" and send the screenshot on WhatsApp, we check the payment by hand against our bank record. Once it's verified, you'll get a WhatsApp notification, usually within a few hours. Your seat is held until then.</div>
         </details>
         <details>
-          <summary>What is the cancellation / rescheduling policy?</summary>
-          <div class="ans">You can reschedule for free to a future batch up to 48 hours before the session. Cancellations made more than 48 hours before get a full refund; after that we can't refund, but you can transfer your seat to a friend.</div>
+          <summary>What is the cancellation, refund and transfer policy?</summary>
+          <div class="ans">There are no cancellations or refunds. You can transfer your seat to another person, but please tell us on WhatsApp in advance, before the workshop.</div>
         </details>
       </div>
     </div>
@@ -611,9 +660,9 @@
       </div>
       <div>
         <h4>Contact</h4>
-        <p style="margin:0">WhatsApp: <a data-wa-link href="#" target="_blank" rel="noopener"><span data-wa-display>+91 83100 78780</span></a><br>
-        Email: <a data-email-link href="#"><span data-email>niminsr@gmail.com</span></a><br>
-        <span data-venue>Venue shared on WhatsApp after booking</span></p>
+        <p style="margin:0">WhatsApp: <a data-wa-link href="#" target="_blank" rel="noopener"><span data-wa-display>+91 83109 28904</span></a><br>
+        Email: <a data-email-link href="#"><span data-email>niminsr29@gmail.com</span></a><br>
+        <span data-venue>Amara Timeless Indian Desserts, HAL Old Airport Road, near Indiranagar, Bengaluru</span></p>
       </div>
       <div>
         <h4>Policies</h4>
@@ -640,15 +689,16 @@ const CONFIG = {
   eventTime: "10:00 AM – 12:00 PM",
   eventStart: "2026-10-31T10:00:00+05:30", // used for "Add to calendar"
   eventEnd:   "2026-10-31T12:00:00+05:30",
-  venue: "Venue shared on WhatsApp after booking",
-  mapUrl: "",                         // Google Maps share link (leave "" until you have one)
+  venue: "Amara Timeless Indian Desserts, HAL Old Airport Road, near Indiranagar, Bengaluru",
+  mapUrl: "https://maps.app.goo.gl/Rhg7vvcGkVq6zKgj8",                         // Google Maps share link (leave "" until you have one)
   hostName: "Nirmala",
   hostBio: "Clay enthusiast and your host for the day.",
 
   upiId: "8310928904@ybl",            // your UPI ID (GPay → Profile → UPI ID)
   upiName: "Nirmala",                 // name shown in the payer's app
-  whatsapp: "918310078780",           // country code + number, digits only
-  email: "niminsr@gmail.com",
+  whatsapp: "918310928904",           // country code + number, digits only
+  email: "niminsr29@gmail.com",
+  contactPhone: "918310928904",      // shown in the footer; booking WhatsApp buttons use `whatsapp` above
 
   // Demo-mode fallbacks (live values come from the Apps Script)
   earlyPrice: 699,
@@ -661,13 +711,7 @@ const CONFIG = {
 
 /* Gallery photos (Unsplash license: free to use, hotlinked as Unsplash asks). Swap in your own later. */
 const GALLERY = [
-  { src: "images/nirmala-magnets.webp", cap: "Fridge magnets made by Nirmala", size: "tall" },
-  { id: "photo-1579018024219-fa9694ca5698", cap: "Rolling soft, colourful clay", by: "jwatson95", size: "tall" },
-  { id: "photo-1703294114247-46a556f4ef82", cap: "Shaping a tiny animal", by: "crazyivan_ita" },
-  { id: "photo-1679454598327-79a2014013cb", cap: "A clay keychain charm", by: "coppertistwu" },
-  { id: "photo-1782877757096-817463a79dcb", cap: "Palm-sized and adorable", by: "bijoyabraham", size: "tall" },
-  { id: "photo-1781389004856-264bd817ce80", cap: "Adding details with tools", by: "sebas_royy", size: "wide" },
-  { id: "photo-1650197642892-888c103e8f20", cap: "A whole table of handmade animals", by: "sk00leks", size: "wide" },
+  { src: "images/nirmala-magnets-landscape.webp", cap: "Fridge magnets made by Nirmala", size: "full" },
 ];
 
 /* ===================================================================== */
@@ -705,8 +749,8 @@ function fillStatic() {
   $$("[data-email]").forEach(el => el.textContent = CONFIG.email);
   $$("[data-email-link]").forEach(el => el.href = "mailto:" + CONFIG.email);
   const wa = "https://wa.me/" + CONFIG.whatsapp;
-  $$("[data-wa-link]").forEach(el => el.href = wa);
-  $$("[data-wa-display]").forEach(el => el.textContent = "+" + CONFIG.whatsapp.replace(/^(\d{2})(\d{5})(\d+)$/, "$1 $2 $3"));
+  $$("[data-wa-link]").forEach(el => el.href = "https://wa.me/" + CONFIG.contactPhone);
+  $$("[data-wa-display]").forEach(el => el.textContent = "+" + CONFIG.contactPhone.replace(/^(\d{2})(\d{5})(\d+)$/, "$1 $2 $3"));
   $("#btnWa").href = wa;
   $("#btnWaitlist").href = wa + "?text=" + encodeURIComponent(`Hi! I'd like to join the waitlist for the next ${CONFIG.brand} clay workshop.`);
   $("#upiId").textContent = CONFIG.upiId;
@@ -760,11 +804,12 @@ function renderLive() {
     ? 'Early bird ends in <span class="countdown" data-countdown>—</span> · Price per person, all inclusive'
     : "Price per person, all inclusive · Instant booking";
 
-  const sel = $("#fQty"), keep = +sel.value || 1;
+  const sel = $("#fQty"), keep = +sel.value || 0;
   const max = Math.max(1, Math.min(live.maxSeatsPerBooking, live.seatsLeft));
   sel.innerHTML = "";
+  sel.add(new Option("Select seats", ""));
   for (let i = 1; i <= max; i++) sel.add(new Option(i + (i === 1 ? " seat" : " seats"), i));
-  sel.value = Math.min(keep, max);
+  sel.value = keep ? Math.min(keep, max) : "";
   updateSummary();
 
   // Only from the details step: someone already on the QR/UTR step may have paid and must be able to submit
@@ -773,9 +818,9 @@ function renderLive() {
 }
 
 function updateSummary() {
-  const q = +$("#fQty").value || 1;
-  $("#sumLine").textContent = `${q} × ${inr(live.price)}`;
-  $("#sumTotal").textContent = inr(q * live.price);
+  const q = +$("#fQty").value || 0;
+  $("#sumLine").textContent = q ? `${q} × ${inr(live.price)}` : "Choose number of seats";
+  $("#sumTotal").textContent = q ? inr(q * live.price) : "₹0";
 }
 
 function tickCountdown() {
@@ -833,6 +878,7 @@ function showPanel(name) {
 }
 function showErr(msg, waText) {
   const el = $("#globalErr"); el.textContent = msg; el.hidden = false;
+  el.className = "alert " + (waText ? "alert-info" : "alert-err");
   const wa = $("#btnWaErr");
   wa.hidden = !waText;
   if (waText) wa.href = waLink(waText);
@@ -884,14 +930,17 @@ function validateDetails() {
   const name = $("#fName").value.trim();
   const email = $("#fEmail").value.trim();
   const phone = normPhone($("#fPhone").value);
+  const qty = +$("#fQty").value || 0;
+  const emailOk = !email || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
   const ok = [
     setFieldErr($("#fName"), "#eName", name.length < 2 ? "Please enter your full name." : ""),
-    setFieldErr($("#fEmail"), "#eEmail", !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? "Please enter a valid email address."
-      : emailTypo(email) ? `Did you mean ${emailTypo(email)}? Your confirmation is sent here.` : ""),
-    setFieldErr($("#fPhone"), "#ePhone", phone ? "" : "Enter a 10-digit Indian mobile number."),
+    setFieldErr($("#fPhone"), "#ePhone", phone ? "" : "Please enter your 10-digit WhatsApp number."),
+    setFieldErr($("#fQty"), "#eQty", qty ? "" : "Please choose how many seats you need."),
+    setFieldErr($("#fEmail"), "#eEmail", !emailOk ? "Please enter a valid email address, or leave it empty."
+      : emailTypo(email) ? `Did you mean ${emailTypo(email)}?` : ""),
   ].every(Boolean);
   if (!ok) { const bad = $('[aria-invalid="true"]'); bad && bad.focus(); return null; }
-  return { name, email, phone, qty: +$("#fQty").value || 1 };
+  return { name, email, phone, qty };
 }
 
 function newBookingId() {
@@ -919,6 +968,7 @@ function renderQr() {
     box.style.lineHeight = "1.4";
   }
   $("#payAmount").textContent = inr(booking.amount);
+  $("#payUsd").textContent = `${inr(live.price)} per seat`;
   $("#payRef").textContent = booking.id;
   const app = $("#btnUpiApp");
   app.hidden = !isMobile;
@@ -978,7 +1028,7 @@ async function payWithRazorpay(btn) {
           .catch(() => ({ ok: false }));
         busy(btn, false);
         if (v.ok) finish(v.status || "Confirmed");
-        else showErr(`Payment received, but we couldn't confirm it automatically. Your ref is ${booking.id}. Please WhatsApp us and we'll sort it out right away.`);
+        else showErr(`Payment received, but we couldn't verify it automatically. Your ref is ${booking.id}. Please WhatsApp us and we'll sort it out right away.`);
       },
       modal: { ondismiss: () => busy(btn, false) },
     });
@@ -995,12 +1045,12 @@ function finish(status) {
   $("#doneId").textContent = booking.id;
   const confirmed = status === "Confirmed";
   const wait = /waitlist/i.test(status);
-  $("#doneTitle").textContent = confirmed ? "You're booked! 🎉" : wait ? "We've received your payment" : "Booking received!";
+  $("#doneTitle").textContent = confirmed ? "Payment verified! 🎉" : wait ? "We've received your payment" : "Booking received!";
   $("#doneMsg").textContent = confirmed
-    ? `Your ${booking.qty > 1 ? booking.qty + " seats are" : "seat is"} confirmed. A confirmation email is on its way to ${booking.email}.`
+    ? `Your ${booking.qty > 1 ? booking.qty + " seats are" : "seat is"} verified. We'll send you a WhatsApp notification.`
     : wait
       ? "The batch filled up while you were paying. We'll contact you on WhatsApp to move you to the next batch or refund you in full."
-      : `We'll verify your UPI payment and email your confirmation to ${booking.email}, usually within a few hours. Your seat is held.`;
+      : `Thanks! We'll check your payment by hand. Once it's verified, you'll get a WhatsApp notification, usually within a few hours. Your seat is held until then.`;
   const fmt = iso => new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
   $("#btnCal").href = "https://calendar.google.com/calendar/render?" + new URLSearchParams({
     action: "TEMPLATE", text: `${CONFIG.brand}: Clay Workshop`, dates: fmt(CONFIG.eventStart) + "/" + fmt(CONFIG.eventEnd),
@@ -1045,29 +1095,27 @@ function init() {
     setTimeout(() => e.target.textContent = "Copy", 1800);
   });
   $("#btnSaveQr").addEventListener("click", saveQr);
-  $("#btnPaid").addEventListener("click", () => { showPanel("utr"); $("#fUtr").focus(); });
+  $("#btnPaid").addEventListener("click", () => { $("#askAmount").textContent = inr(booking.amount); showPanel("utr"); });
   $$("[data-back]").forEach(b => b.addEventListener("click", () => showPanel(b.dataset.back)));
 
-  $("#fUtr").addEventListener("input", e => { e.target.value = e.target.value.replace(/\D/g, ""); e.target.setAttribute("aria-invalid", "false"); });
   $("#panelUtr").addEventListener("submit", async e => {
     e.preventDefault();
     hideErr();
-    const utr = $("#fUtr").value.trim();
-    if (!setFieldErr($("#fUtr"), "#eUtr", /^\d{12}$/.test(utr) ? "" : "The UTR is exactly 12 digits. Check your payment receipt.")) return;
     const btn = $("#btnSubmitUtr");
     busy(btn, true, "Saving your booking…");
     try {
-      booking.utr = utr;
-      const r = await api({ action: "book", bookingId: booking.id, name: booking.name, email: booking.email, phone: booking.phone, qty: booking.qty, amount: booking.amount, utr });
+      booking.utr = "";
+      const r = await api({ action: "book", bookingId: booking.id, name: booking.name, email: booking.email, phone: booking.phone, qty: booking.qty, amount: booking.amount, utr: "" });
       busy(btn, false);
-      if (!r.ok) return showErr((r.error || "Something went wrong.") + " Your payment is safe: send us your booking on WhatsApp and we'll confirm it.",
-        waBooking("Hi! I paid for the clay workshop but the website showed an error. Please confirm my booking.", utr));
+      if (!r.ok) {
+        console.warn("Booking not saved:", r.error);
+        return showErr("Sorry for the inconvenience. We couldn't save your booking just now, but your payment is safe. Please share your payment screenshot with Nirmala on WhatsApp at +91 83109 28904, and she'll take care of your booking.", waBooking("Hi Nirmala! I've paid for the clay workshop, but the website couldn't save my booking. Sharing my payment screenshot here.", ""));
+      }
       booking.id = r.bookingId || booking.id;
       finish(r.status);
     } catch (err) {
       busy(btn, false);
-      showErr("We couldn't reach the server. Your payment is safe: send us your booking on WhatsApp and we'll confirm it.",
-        waBooking("Hi! I paid for the clay workshop but the website couldn't save my booking. Please confirm it.", utr));
+      showErr("Sorry for the inconvenience. We couldn't save your booking just now, but your payment is safe. Please share your payment screenshot with Nirmala on WhatsApp at +91 83109 28904, and she'll take care of your booking.", waBooking("Hi Nirmala! I've paid for the clay workshop, but the website couldn't save my booking. Sharing my payment screenshot here.", ""));
     }
   });
 
