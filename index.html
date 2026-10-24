@@ -173,6 +173,10 @@
   .gallery figure:hover img { transform: scale(1.05); }
   .gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 12px; color: #fff; font-size: .9rem; font-weight: 600;
     background: linear-gradient(transparent, rgba(42,36,33,.75)); }
+  .ideas { margin: 14px 0 0; background: var(--white); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+  .ideas img { width: 100%; height: auto; display: block; }
+  .ideas figcaption { padding: 14px 18px; font-size: .92rem; color: var(--muted); }
+  .ideas figcaption strong { display: block; color: var(--charcoal); font-family: "Fraunces", serif; font-size: 1.1rem; margin-bottom: 2px; }
   .credit { text-align: center; font-size: .78rem; color: var(--muted); margin-top: 16px; }
   .credit a { color: var(--muted); }
   @media (max-width: 860px) { .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; gap: 10px; } }
@@ -394,7 +398,12 @@
         <p class="lead">Keychains, little animals and cute characters: this is the kind of thing you'll learn to shape, colour and finish.</p>
       </div>
       <div class="gallery" id="galleryGrid"></div>
-      <p class="credit">First photo: Nirmala's own work. Other inspiration photos from Unsplash by <span id="galleryCredits"></span>.</p>
+      <figure class="ideas">
+        <img src="images/inspiration-ideas.webp" width="940" height="455" loading="lazy" decoding="async"
+          alt="Ideas you can make: avocado and octopus keychains, dice and donut keychains, a black cat pin, painted trinket dishes, coasters and a sun dish">
+        <figcaption><strong>Ideas you can make</strong> Keychains, pins, trinket dishes and coasters. Ideas collected by Nirmala from Pinterest.</figcaption>
+      </figure>
+      <p class="credit">First photo: Nirmala's own work. Ideas collage: Pinterest. Other photos from Unsplash by <span id="galleryCredits"></span>.</p>
     </div>
   </section>
 
